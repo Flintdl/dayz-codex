@@ -1,0 +1,427 @@
+[
+  {
+    "slug": "arrow",
+    "name": "Seta de Madeira",
+    "reason": "no image"
+  },
+  {
+    "slug": "improvised-arrow",
+    "name": "Seta Improvisada",
+    "reason": "no image"
+  },
+  {
+    "slug": "ballistic-plate",
+    "name": "Placa Balística",
+    "reason": "no image"
+  },
+  {
+    "slug": "mountain-backpack",
+    "name": "Mochila de Montanha",
+    "reason": "no image"
+  },
+  {
+    "slug": "assault-backpack",
+    "name": "Mochila de Assalto",
+    "reason": "no image"
+  },
+  {
+    "slug": "rope",
+    "name": "Corda",
+    "reason": "no image"
+  },
+  {
+    "slug": "combination-lock",
+    "name": "Cadeado de Combinação",
+    "reason": "no image"
+  },
+  {
+    "slug": "wooden-fence-kit",
+    "name": "Kit Cerca de Madeira",
+    "reason": "no image"
+  },
+  {
+    "slug": "sea-chest",
+    "name": "Baú de Mar (Sea Chest)",
+    "reason": "no image"
+  },
+  {
+    "slug": "wooden-floor",
+    "name": "Piso de Madeira",
+    "reason": "no image"
+  },
+  {
+    "slug": "stethoscope",
+    "name": "Estetoscópio",
+    "reason": "no image"
+  },
+  {
+    "slug": "frying-pan",
+    "name": "Frigideira",
+    "reason": "no image"
+  },
+  {
+    "slug": "honey-jar",
+    "name": "Pote de Mel",
+    "reason": "no image"
+  },
+  {
+    "slug": "powdered-eggs",
+    "name": "Ovos em Pó",
+    "reason": "no image"
+  },
+  {
+    "slug": "marmalade",
+    "name": "Geleia",
+    "reason": "no image"
+  },
+  {
+    "slug": "sausage",
+    "name": "Linguiça",
+    "reason": "no image"
+  },
+  {
+    "slug": "pasta-can",
+    "name": "Macarrão Enlatado (Spagheroni)",
+    "reason": "no image"
+  },
+  {
+    "slug": "wild-berry",
+    "name": "Frutos Silvestres",
+    "reason": "no image"
+  },
+  {
+    "slug": "nv-goggles",
+    "name": "Óculos de Visão Noturna",
+    "reason": "no image"
+  },
+  {
+    "slug": "portable-gas-stove",
+    "name": "Fogareiro Portátil",
+    "reason": "no image"
+  },
+  {
+    "slug": "gas-canister",
+    "name": "Cartucho de Gás",
+    "reason": "no image"
+  },
+  {
+    "slug": "leather-jacket",
+    "name": "Jaqueta de Couro",
+    "reason": "no image"
+  },
+  {
+    "slug": "mk17-mag",
+    "name": "MK17 Mag (20rnd)",
+    "reason": "no image"
+  },
+  {
+    "slug": "pipe-wrench",
+    "name": "Chave de Tubo",
+    "reason": "no image"
+  },
+  {
+    "slug": "lockpick",
+    "name": "Picadora (Lockpick)",
+    "reason": "no image"
+  },
+  {
+    "slug": "hacksaw",
+    "name": "Serra de Arco",
+    "reason": "no image"
+  },
+  {
+    "slug": "boar",
+    "name": "Javali",
+    "reason": "no image"
+  },
+  {
+    "slug": "brown-bear",
+    "name": "Urso Pardo",
+    "reason": "no image"
+  },
+  {
+    "slug": "rabbit",
+    "name": "Coelho",
+    "reason": "no image"
+  },
+  {
+    "slug": "pig",
+    "name": "Porco",
+    "reason": "no image"
+  },
+  {
+    "slug": "goat",
+    "name": "Cabra",
+    "reason": "no image"
+  },
+  {
+    "slug": "tuna-can",
+    "name": "Lata de Atum",
+    "reason": "no image"
+  },
+  {
+    "slug": "beans-can",
+    "name": "Feijão Enlatado",
+    "reason": "no image"
+  },
+  {
+    "slug": "sardines-can",
+    "name": "Lata de Sardinhas",
+    "reason": "no image"
+  },
+  {
+    "slug": "powdered-milk",
+    "name": "Leite em Pó",
+    "reason": "no image"
+  },
+  {
+    "slug": "rice-bag",
+    "name": "Saco de Arroz",
+    "reason": "no image"
+  },
+  {
+    "slug": "raw-steak",
+    "name": "Bife Cru",
+    "reason": "no image"
+  },
+  {
+    "slug": "cooked-steak",
+    "name": "Bife Cozido",
+    "reason": "no image"
+  },
+  {
+    "slug": "potato",
+    "name": "Batata",
+    "reason": "no image"
+  },
+  {
+    "slug": "pepper",
+    "name": "Pimentão",
+    "reason": "no image"
+  },
+  {
+    "slug": "pumpkin-seeds",
+    "name": "Sementes de Abóbora",
+    "reason": "no image"
+  },
+  {
+    "slug": "potato-seeds",
+    "name": "Tubérculos de Batata",
+    "reason": "no image"
+  },
+  {
+    "slug": "zucchini-seeds",
+    "name": "Sementes de Abobrinha",
+    "reason": "no image"
+  },
+  {
+    "slug": "pepper-seeds",
+    "name": "Sementes de Pimentão",
+    "reason": "no image"
+  },
+  {
+    "slug": "macromyces-mushroom",
+    "name": "Cogumelo Macromyces",
+    "reason": "no image"
+  },
+  {
+    "slug": "raw-chicken",
+    "name": "Frango Cru",
+    "reason": "no image"
+  },
+  {
+    "slug": "cooked-chicken",
+    "name": "Frango Cozido",
+    "reason": "no image"
+  },
+  {
+    "slug": "raw-fish",
+    "name": "Peixe Cru",
+    "reason": "no image"
+  },
+  {
+    "slug": "fish-fillet-cooked",
+    "name": "Filé de Peixe Cozido",
+    "reason": "no image"
+  },
+  {
+    "slug": "raw-rabbit",
+    "name": "Coelho Cru",
+    "reason": "no image"
+  },
+  {
+    "slug": "rabbit-pelt",
+    "name": "Pele de Coelho",
+    "reason": "no image"
+  },
+  {
+    "slug": "cow-pelt",
+    "name": "Pele de Vaca",
+    "reason": "no image"
+  },
+  {
+    "slug": "raw-meat-pile",
+    "name": "Carne Bruta (Steak)",
+    "reason": "no image"
+  },
+  {
+    "slug": "spaghetti-can",
+    "name": "Macarrão Enlatado",
+    "reason": "no image"
+  },
+  {
+    "slug": "peaches-can",
+    "name": "Pêssego em Calda",
+    "reason": "no image"
+  },
+  {
+    "slug": "dog-food",
+    "name": "Ração de Cão",
+    "reason": "no image"
+  },
+  {
+    "slug": "cereal-box",
+    "name": "Caixa de Cereal",
+    "reason": "no image"
+  },
+  {
+    "slug": "crackers",
+    "name": "Bolacha (Crackers)",
+    "reason": "no image"
+  },
+  {
+    "slug": "chocolate",
+    "name": "Barra de Chocolate",
+    "reason": "no image"
+  },
+  {
+    "slug": "chips",
+    "name": "Batata Frita (Saco)",
+    "reason": "no image"
+  },
+  {
+    "slug": "milk-bottle",
+    "name": "Garrafa de Leite",
+    "reason": "no image"
+  },
+  {
+    "slug": "stock-folding",
+    "name": "Coronha Dobrável (AK)",
+    "reason": "no image"
+  },
+  {
+    "slug": "rags",
+    "name": "Rasgos de Pano",
+    "reason": "no image"
+  },
+  {
+    "slug": "charcoal-tablets",
+    "name": "Carvão Ativado",
+    "reason": "no image"
+  },
+  {
+    "slug": "saline-iv",
+    "name": "Bag Soro Fisiológico (IV)",
+    "reason": "no image"
+  },
+  {
+    "slug": "blood-bag",
+    "name": "Bolsa de Sangue (Cheia)",
+    "reason": "no image"
+  },
+  {
+    "slug": "painkillers",
+    "name": "Analgésicos",
+    "reason": "no image"
+  },
+  {
+    "slug": "crowbar",
+    "name": "Pé de Cabra",
+    "reason": "no image"
+  },
+  {
+    "slug": "snowshoes",
+    "name": "Raquetes de Neve",
+    "reason": "no image"
+  },
+  {
+    "slug": "ice-axe",
+    "name": "Picareta de Gelo",
+    "reason": "no image"
+  },
+  {
+    "slug": "snow-goggles",
+    "name": "Óculos de Neve",
+    "reason": "no image"
+  },
+  {
+    "slug": "winter-coat",
+    "name": "Casaco de Inverno",
+    "reason": "no image"
+  },
+  {
+    "slug": "thermal-blanket",
+    "name": "Manta Térmica",
+    "reason": "no image"
+  },
+  {
+    "slug": "worm",
+    "name": "Minhoca (Isca)",
+    "reason": "no image"
+  },
+  {
+    "slug": "fire-axe",
+    "name": "Machado de Bombeiro",
+    "reason": "no image"
+  },
+  {
+    "slug": "kitchen-knife",
+    "name": "Faca de Cozinha",
+    "reason": "no image"
+  },
+  {
+    "slug": "can-opener",
+    "name": "Abridor de Latas",
+    "reason": "no image"
+  },
+  {
+    "slug": "matches",
+    "name": "Caixa de Fósforos",
+    "reason": "no image"
+  },
+  {
+    "slug": "rangefinder",
+    "name": "Telêmetro Laser",
+    "reason": "no image"
+  },
+  {
+    "slug": "water-purification-tablets",
+    "name": "Pastilhas de Purificação",
+    "reason": "no image"
+  },
+  {
+    "slug": "cooking-pot",
+    "name": "Panela de Cozinhar",
+    "reason": "no image"
+  },
+  {
+    "slug": "headlight-bulb",
+    "name": "Lâmpada de Farol",
+    "reason": "no image"
+  },
+  {
+    "slug": "car-trunk",
+    "name": "Porta-Malas",
+    "reason": "no image"
+  },
+  {
+    "slug": "brake-fluid",
+    "name": "Fluido de Freio",
+    "reason": "no image"
+  },
+  {
+    "slug": "glow-plug",
+    "name": "Vela de Aquecimento",
+    "reason": "no image"
+  }
+]

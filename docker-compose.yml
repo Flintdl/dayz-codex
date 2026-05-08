@@ -1,0 +1,38 @@
+services:
+  dayz-codex:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dayz-codex:latest
+    container_name: dayz-codex
+    ports:
+      - "${HOST_PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - HOSTNAME=0.0.0.0
+      - PORT=3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 128M
+    # Boas práticas anti-injection / read-only quando possível
+    security_opt:
+      - no-new-privileges:true
+    read_only: false  # Next.js precisa escrever em /app/.next/cache
+    tmpfs:
+      - /tmp
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

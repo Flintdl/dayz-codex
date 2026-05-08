@@ -1,0 +1,737 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   DAYZ CODEX — Design System
+   Tema: pós-apocalíptico militar / survival manual desgastado
+   Paleta inspirada em uniformes da CDF, brass de munição, sangue seco
+   e papel de mapa amarelado pelo tempo.
+   ===================================================================== */
+
+@theme inline {
+  /* Base / surfaces */
+  --color-bg: var(--c-bg);
+  --color-bg-deep: var(--c-bg-deep);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-surface-3: var(--c-surface-3);
+  --color-border: var(--c-border);
+  --color-border-strong: var(--c-border-strong);
+
+  /* Text */
+  --color-bone: var(--c-bone);
+  --color-bone-dim: var(--c-bone-dim);
+  --color-ash: var(--c-ash);
+  --color-ash-dim: var(--c-ash-dim);
+
+  /* Accents */
+  --color-olive: var(--c-olive);
+  --color-olive-bright: var(--c-olive-bright);
+  --color-khaki: var(--c-khaki);
+  --color-blood: var(--c-blood);
+  --color-blood-bright: var(--c-blood-bright);
+  --color-rust: var(--c-rust);
+  --color-brass: var(--c-brass);
+  --color-radiation: var(--c-radiation);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-stencil: "Black Ops One", "Oswald", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-typewriter: "Special Elite", "Courier New", monospace;
+}
+
+:root {
+  /* ── core palette ── */
+  --c-bg: #0c0e0a; /* charcoal/oliva profundo, quase preto com tinge verde */
+  --c-bg-deep: #07080a; /* fundo sob páginas (atrás do conteúdo) */
+  --c-surface: #14181230; /* painéis, com transparência pra grain aparecer */
+  --c-surface-2: #1a1f17; /* cards/painéis sólidos */
+  --c-surface-3: #232a1f; /* hover/destaque */
+  --c-border: #36402c; /* borda padrão — cor de tarpaulin militar */
+  --c-border-strong: #5a6843; /* borda em foco/destaque */
+
+  --c-bone: #e8e3d3; /* texto principal — osso/papel envelhecido */
+  --c-bone-dim: #b8b29c; /* texto secundário */
+  --c-ash: #8a8675; /* metadata */
+  --c-ash-dim: #5e5b51; /* placeholder */
+
+  --c-olive: #6e7a4a; /* verde militar base */
+  --c-olive-bright: #9aaa66; /* verde tático destaque */
+  --c-khaki: #b6a26a; /* khaki/areia poeirenta */
+  --c-blood: #8a2e22; /* sangue seco */
+  --c-blood-bright: #c8412e; /* sangue fresco/perigo crítico */
+  --c-rust: #9a5b2c; /* ferrugem — degradação */
+  --c-brass: #c89c4e; /* munição/brass */
+  --c-radiation: #d8e84a; /* hazard/radiação amarelo-ácido */
+
+  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.4), 0 12px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset,
+    0 8px 18px -10px rgba(0, 0, 0, 0.6);
+  --shadow-glow-blood: 0 0 0 1px rgba(200, 65, 46, 0.5),
+    0 0 20px -2px rgba(200, 65, 46, 0.4);
+  --shadow-glow-olive: 0 0 0 1px rgba(154, 170, 102, 0.4),
+    0 0 18px -4px rgba(154, 170, 102, 0.4);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Base
+   ───────────────────────────────────────────────────────────────────── */
+html,
+body {
+  background: var(--c-bg-deep);
+  color: var(--c-bone);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html[data-scroll-behavior="smooth"] {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  /* Background com camadas: vinheta + grain SVG inline + scanlines sutis */
+  background-color: var(--c-bg-deep);
+  background-image:
+    radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      rgba(110, 122, 74, 0.07) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 80% 50% at 50% 100%,
+      rgba(138, 46, 34, 0.04) 0%,
+      transparent 60%
+    );
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Grão fino — SVG inline, zero HTTP */
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Scanlines bem leves — só sentido em hover de painel */
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 3px,
+    rgba(255, 255, 255, 0.012) 3px,
+    rgba(255, 255, 255, 0.012) 4px
+  );
+  opacity: 0.6;
+}
+
+/* Conteúdo acima do grão */
+.app-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Tipografia
+   ───────────────────────────────────────────────────────────────────── */
+.font-stencil {
+  font-family: var(--font-stencil);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.font-typewriter {
+  font-family: var(--font-typewriter);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-stencil);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--c-bone);
+  line-height: 1.05;
+}
+h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 400;
+}
+h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+}
+h3 {
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--c-olive);
+  color: var(--c-bg-deep);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Scrollbar custom — fina, com tinge militar
+   ───────────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0e110c;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c3325;
+  border: 2px solid #0e110c;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5340;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2c3325 #0e110c;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Focus
+   ───────────────────────────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--c-olive-bright);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Flaticon UIcons base
+   ───────────────────────────────────────────────────────────────────── */
+i[class^="fi-rr-"],
+i[class*=" fi-rr-"] {
+  display: inline-block;
+  font-style: normal;
+  line-height: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Painéis e cards "manual de campo"
+   ───────────────────────────────────────────────────────────────────── */
+.panel {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(35, 42, 31, 0.6), rgba(20, 24, 18, 0.85));
+  border: 1px solid var(--c-border);
+  box-shadow: var(--shadow-panel);
+}
+.panel--cut {
+  /* Cantos cortados — clip-path tipo dossiê militar */
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(110, 122, 74, 0.18),
+    rgba(110, 122, 74, 0)
+  );
+  border-bottom: 1px solid var(--c-border);
+}
+.panel-header__title {
+  font-family: var(--font-stencil);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-bone);
+}
+.panel-header__meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--c-ash);
+  letter-spacing: 0.05em;
+}
+.panel-body {
+  padding: 16px;
+}
+
+/* Card item — "etiqueta de inventário" */
+.item-card {
+  position: relative;
+  background: linear-gradient(180deg, #1a1f17, #14181d 100%);
+  border: 1px solid var(--c-border);
+  padding: 12px;
+  transition: border-color 0.18s ease, transform 0.18s ease,
+    box-shadow 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.item-card:hover {
+  border-color: var(--c-olive-bright);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-olive);
+}
+.item-card__tag {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  background: var(--c-olive);
+  color: var(--c-bg-deep);
+  padding: 2px 8px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Botão primário — "ação de campo" */
+.btn {
+  --btn-bg: var(--c-surface-3);
+  --btn-fg: var(--c-bone);
+  --btn-bd: var(--c-border-strong);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--btn-bd);
+  font-family: var(--font-stencil);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn:hover {
+  --btn-bg: var(--c-olive);
+  --btn-fg: var(--c-bg-deep);
+  --btn-bd: var(--c-olive-bright);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn--blood {
+  --btn-bg: transparent;
+  --btn-fg: var(--c-blood-bright);
+  --btn-bd: var(--c-blood);
+}
+.btn--blood:hover {
+  --btn-bg: var(--c-blood);
+  --btn-fg: var(--c-bone);
+  --btn-bd: var(--c-blood-bright);
+}
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--c-bone-dim);
+  --btn-bd: var(--c-border);
+}
+.btn--ghost:hover {
+  --btn-bg: var(--c-surface-3);
+  --btn-fg: var(--c-bone);
+}
+
+/* Badge/Pill — status, raridade, tipo */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background: var(--c-surface-3);
+  color: var(--c-bone-dim);
+  border: 1px solid var(--c-border);
+}
+.badge--olive {
+  background: rgba(110, 122, 74, 0.15);
+  color: var(--c-olive-bright);
+  border-color: rgba(154, 170, 102, 0.4);
+}
+.badge--blood {
+  background: rgba(138, 46, 34, 0.15);
+  color: var(--c-blood-bright);
+  border-color: rgba(200, 65, 46, 0.45);
+}
+.badge--brass {
+  background: rgba(200, 156, 78, 0.12);
+  color: var(--c-brass);
+  border-color: rgba(200, 156, 78, 0.4);
+}
+.badge--rust {
+  background: rgba(154, 91, 44, 0.12);
+  color: #c98856;
+  border-color: rgba(154, 91, 44, 0.4);
+}
+.badge--radiation {
+  background: rgba(216, 232, 74, 0.1);
+  color: var(--c-radiation);
+  border-color: rgba(216, 232, 74, 0.35);
+}
+
+/* Stat row — barras estilo HUD (fome, sede, sangue) */
+.stat-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 56px;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.stat-row__label {
+  color: var(--c-ash);
+}
+.stat-row__bar {
+  height: 6px;
+  background: #0e110c;
+  border: 1px solid var(--c-border);
+  position: relative;
+  overflow: hidden;
+}
+.stat-row__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--c-olive), var(--c-olive-bright));
+}
+.stat-row__fill--blood {
+  background: linear-gradient(90deg, var(--c-blood), var(--c-blood-bright));
+}
+.stat-row__fill--brass {
+  background: linear-gradient(90deg, var(--c-rust), var(--c-brass));
+}
+.stat-row__value {
+  color: var(--c-bone);
+  text-align: right;
+}
+
+/* Input "manual" — campo de busca */
+.input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px 0 38px;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  color: var(--c-bone);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input:focus {
+  border-color: var(--c-olive-bright);
+  box-shadow: 0 0 0 3px rgba(154, 170, 102, 0.18);
+}
+.input::placeholder {
+  color: var(--c-ash-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+}
+
+/* Label "tarja" */
+.tape-label {
+  display: inline-block;
+  font-family: var(--font-stencil);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-bg-deep);
+  background: var(--c-khaki);
+  padding: 3px 10px;
+  position: relative;
+}
+.tape-label::before,
+.tape-label::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: inherit;
+  opacity: 0.6;
+}
+.tape-label::before {
+  left: -6px;
+  clip-path: polygon(100% 0, 0 30%, 100% 60%, 0 100%);
+}
+.tape-label::after {
+  right: -6px;
+  clip-path: polygon(0 0, 100% 30%, 0 60%, 100% 100%);
+}
+
+/* Divider militar */
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--c-border-strong),
+    transparent
+  );
+  margin: 1.5rem 0;
+}
+
+/* Stamp / selo "TOP SECRET" estilo */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-stencil);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 2px solid currentColor;
+  color: var(--c-blood-bright);
+  transform: rotate(-3deg);
+  opacity: 0.85;
+}
+
+/* Animations */
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+@keyframes scan-line {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade {
+  animation: fade-in 0.3s ease-out both;
+}
+.animate-flicker {
+  animation: flicker 4s ease-in-out infinite;
+}
+
+/* Hover scan effect — passagem de "leitor" sobre painel */
+.scan-on-hover {
+  position: relative;
+  overflow: hidden;
+}
+.scan-on-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(154, 170, 102, 0.08),
+    transparent
+  );
+  height: 60%;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+.scan-on-hover:hover::after {
+  animation: scan-line 1.4s ease-out forwards;
+}
+
+/* Crosshatch divisor pra cabeçalhos importantes */
+.crosshatch {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 4px,
+    rgba(184, 178, 156, 0.08) 4px,
+    rgba(184, 178, 156, 0.08) 5px
+  );
+}
+
+/* Skeleton loading */
+.skel {
+  background: linear-gradient(
+    90deg,
+    #1a1f17 25%,
+    #232a1f 50%,
+    #1a1f17 75%
+  );
+  background-size: 200% 100%;
+  animation: pulse-skel 1.6s ease-in-out infinite;
+}
+@keyframes pulse-skel {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+}
+
+/* Nav link de header */
+.nav-link {
+  font-family: var(--font-stencil);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-bone-dim);
+  padding: 6px 12px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.nav-link:hover {
+  color: var(--c-bone);
+  border-bottom-color: var(--c-olive);
+}
+.nav-link.active {
+  color: var(--c-olive-bright);
+  border-bottom-color: var(--c-olive-bright);
+}
+
+/* Compass bullet point — antes de listas militares */
+.bullet-mil {
+  list-style: none;
+  padding-left: 0;
+}
+.bullet-mil > li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.bullet-mil > li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  color: var(--c-olive);
+  font-size: 0.7rem;
+}
+
+/* Util — texto degradê militar para hero */
+.text-camo {
+  background: linear-gradient(
+    180deg,
+    var(--c-bone) 0%,
+    var(--c-khaki) 50%,
+    var(--c-olive-bright) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Leaflet — overrides pra combinar com tema */
+.leaflet-container {
+  background: #07080a !important;
+  font-family: var(--font-mono) !important;
+}
+.leaflet-popup-content-wrapper {
+  background: var(--c-surface-2) !important;
+  color: var(--c-bone) !important;
+  border: 1px solid var(--c-border-strong);
+  border-radius: 0 !important;
+  box-shadow: var(--shadow-panel);
+}
+.leaflet-popup-tip {
+  background: var(--c-surface-2) !important;
+  border: 1px solid var(--c-border-strong);
+}
+.leaflet-popup-close-button {
+  color: var(--c-bone-dim) !important;
+}
+.leaflet-control-zoom a {
+  background: var(--c-surface-2) !important;
+  color: var(--c-bone) !important;
+  border: 1px solid var(--c-border) !important;
+}
+.leaflet-control-zoom a:hover {
+  background: var(--c-surface-3) !important;
+  border-color: var(--c-olive-bright) !important;
+}
+.dz-marker > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  transition: transform 0.15s ease;
+}
+.dz-marker:hover > span {
+  transform: scale(1.3);
+}
+
+/* Tabela manual de campo */
+.field-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.field-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-family: var(--font-stencil);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--c-ash);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--c-border-strong);
+  background: rgba(110, 122, 74, 0.06);
+}
+.field-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-bone-dim);
+}
+.field-table tr:hover td {
+  background: rgba(110, 122, 74, 0.05);
+  color: var(--c-bone);
+}

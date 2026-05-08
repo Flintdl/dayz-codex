@@ -1,0 +1,41 @@
+{
+  "name": "dayz-codex",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Guia/Codex de DayZ — itens, crafting, sobrevivência, base building e mapas com cadeia de relações entre itens",
+  "scripts": {
+    "predev": "bash scripts/update-icons.sh && node scripts/build-image-manifest.mjs",
+    "dev": "rm -rf .next/cache && next dev --hostname 0.0.0.0",
+    "prebuild": "bash scripts/update-icons.sh && node scripts/build-image-manifest.mjs",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0 --port 3000",
+    "lint": "next lint",
+    "fetch:images": "node scripts/fetch-wiki-images.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "manifest": "node scripts/build-image-manifest.mjs",
+    "docker:build": "docker build -t dayz-codex:latest .",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "audit:ci": "npm audit --audit-level=high --omit=dev",
+    "analyze": "ANALYZE=true next build"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "next": "^16.2.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/leaflet": "^1.9.21",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16.2.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
