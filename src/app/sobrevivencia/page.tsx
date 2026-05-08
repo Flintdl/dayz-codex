@@ -1,10 +1,19 @@
 import Link from "next/link";
 import { SURVIVAL_STATS, DISEASES } from "@/data/survival";
+import { MECHANICS, type MechanicSection } from "@/data/mechanics";
 import { ITEMS_BY_SLUG } from "@/data/items";
 import type { SurvivalStat, Disease } from "@/data/types";
 
 export const metadata = {
   title: "Sobrevivência",
+};
+
+const TONE_COLOR: Record<MechanicSection["tone"], string> = {
+  olive: "var(--c-olive-bright)",
+  brass: "var(--c-brass)",
+  blood: "var(--c-blood-bright)",
+  rust: "var(--c-rust)",
+  radiation: "var(--c-radiation)",
 };
 
 const SEVERITY_TONE: Record<Disease["severity"], string> = {
@@ -48,7 +57,83 @@ export default function SurvivalPage() {
           ))}
         </div>
       </section>
+
+      <section className="space-y-4">
+        <h2 className="flex items-center gap-2">
+          <i className="fi-rr-shield text-[var(--c-brass)]" />
+          Mecânicas Avançadas
+        </h2>
+        <p className="text-[var(--c-bone-dim)] text-sm max-w-3xl">
+          Sistemas que separam sobreviventes amadores de veteranos: damage zones,
+          shock × sangue, transfusão por tipo, persistência, clima, hunting,
+          keybinds, loot tier system.
+        </p>
+        <nav className="panel panel-body flex flex-wrap gap-2">
+          {MECHANICS.map((m) => (
+            <a
+              key={m.slug}
+              href={`#${m.slug}`}
+              className="badge cursor-pointer"
+              style={{
+                color: TONE_COLOR[m.tone],
+                borderColor: TONE_COLOR[m.tone],
+              }}
+            >
+              <i className={`fi-rr-${m.icon} mr-1`} /> {m.title.toUpperCase()}
+            </a>
+          ))}
+        </nav>
+        <div className="space-y-4">
+          {MECHANICS.map((m) => (
+            <MechanicCard key={m.slug} m={m} />
+          ))}
+        </div>
+      </section>
     </div>
+  );
+}
+
+function MechanicCard({ m }: { m: MechanicSection }) {
+  const tone = TONE_COLOR[m.tone];
+  return (
+    <article id={m.slug} className="panel scroll-mt-24">
+      <div className="panel-header">
+        <span className="panel-header__title flex items-center gap-2">
+          <i className={`fi-rr-${m.icon}`} style={{ color: tone }} />
+          {m.title}
+        </span>
+      </div>
+      <div className="panel-body space-y-4 text-sm">
+        <p className="text-[var(--c-bone-dim)] leading-relaxed">{m.intro}</p>
+        <ul className="bullet-mil text-[var(--c-bone-dim)] space-y-1.5">
+          {m.rules.map((r, i) => (
+            <li key={i}>{r}</li>
+          ))}
+        </ul>
+        {m.table && (
+          <div className="overflow-x-auto">
+            <table className="field-table">
+              <thead>
+                <tr>
+                  {m.table.columns.map((c) => (
+                    <th key={c}>{c}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {m.table.rows.map((row, i) => (
+                  <tr key={i}>
+                    {row.map((cell, j) => (
+                      <td key={j}>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </article>
   );
 }
 
