@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PWARegister } from "@/components/PWARegister";
 import "./globals.css";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -100,6 +101,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <PWARegister />
       </body>
     </html>
   );

@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { ITEMS, ITEMS_BY_SLUG, CATEGORY_META, getItem } from "@/data/items";
 import { RECIPES, buildRecipeIndex } from "@/data/recipes";
 import { ItemImage } from "@/components/ItemImage";
+import { FavoriteButton } from "@/components/FavoriteButton";
+import { HistoryRecorder } from "@/components/HistoryRecorder";
 import type { Item, Rarity } from "@/data/types";
 
 const RARITY_LABEL: Record<Rarity, string> = {
@@ -98,11 +100,15 @@ export default async function ItemDetailPage({
             </span>
           </div>
           <div className="flex flex-col gap-3">
-            {item.subcategory && (
-              <span className="tape-label self-start">
-                {item.subcategory.toUpperCase()}
-              </span>
-            )}
+            <HistoryRecorder slug={item.slug} />
+            <div className="flex items-center justify-between gap-3">
+              {item.subcategory && (
+                <span className="tape-label">
+                  {item.subcategory.toUpperCase()}
+                </span>
+              )}
+              <FavoriteButton slug={item.slug} />
+            </div>
             <h1 className="!leading-tight">{item.name}</h1>
             <p className="text-[var(--c-bone-dim)] text-base leading-relaxed">
               {item.summary}
@@ -309,6 +315,9 @@ export default async function ItemDetailPage({
         </section>
       )}
 
+      {/* MECHANICS RELATED ──────────────────────── */}
+      <RelatedMechanics item={item} />
+
       {/* TAGS ──────────────────────── */}
       {item.tags && item.tags.length > 0 && (
         <div className="flex flex-wrap gap-2">
@@ -320,6 +329,62 @@ export default async function ItemDetailPage({
         </div>
       )}
     </article>
+  );
+}
+
+function RelatedMechanics({ item }: { item: Item }) {
+  /**
+   * Heurística simples: linka pra mecânicas que mencionam categoria/tags do item.
+   * Custo: zero — categoria → mecânicas direto.
+   */
+  const links: Array<{ slug: string; label: string }> = [];
+  if (item.category === "weapon") {
+    links.push(
+      { slug: "damage-zones", label: "Damage Zones" },
+      { slug: "weapon-noise", label: "Som de Armas" },
+      { slug: "blood-shock-system", label: "Sangue × Shock" },
+    );
+  }
+  if (item.category === "medical") {
+    links.push(
+      { slug: "blood-shock-system", label: "Sangue × Shock" },
+      { slug: "blood-types", label: "Tipos Sanguíneos" },
+    );
+  }
+  if (item.category === "clothing" || item.category === "container") {
+    links.push(
+      { slug: "stamina-system", label: "Estamina & Carga" },
+      { slug: "weather-temperature", label: "Clima & Temperatura" },
+      { slug: "inventory-tetris", label: "Inventário & Slots" },
+    );
+  }
+  if (item.category === "consumable" && item.subcategory?.toLowerCase().includes("ve")) {
+    links.push({ slug: "vehicle-checklist", label: "Ligar um Veículo" });
+  }
+  if (item.category === "ammo" || item.category === "magazine") {
+    links.push({ slug: "weapon-noise", label: "Som de Armas" });
+  }
+
+  if (links.length === 0) return null;
+
+  return (
+    <section className="panel">
+      <div className="panel-header">
+        <span className="panel-header__title">Mecânicas Relacionadas</span>
+      </div>
+      <div className="panel-body flex flex-wrap gap-2">
+        {links.map((l) => (
+          <Link
+            key={l.slug}
+            href={`/sobrevivencia#${l.slug}`}
+            className="badge badge--brass hover:bg-[var(--c-brass)]/30"
+          >
+            <i className="fi-rr-shield mr-1" />
+            {l.label}
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }
 

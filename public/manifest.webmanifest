@@ -3,15 +3,35 @@
   "short_name": "DayZ Codex",
   "description": "Manual de campo de DayZ — itens, crafting, sobrevivência, mapas e base building.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#07080a",
   "theme_color": "#9aaa66",
-  "orientation": "any",
+  "categories": ["games", "reference", "utilities"],
+  "lang": "pt-BR",
   "icons": [
     {
       "src": "/favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Itens",
+      "url": "/itens",
+      "description": "Catálogo completo"
+    },
+    {
+      "name": "Mapa Tático",
+      "url": "/mapa-interativo",
+      "description": "Markers customizáveis"
+    },
+    {
+      "name": "Loadout",
+      "url": "/loadout",
+      "description": "Calculadora de carga"
     }
   ]
 }

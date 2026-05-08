@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ITEMS, CATEGORY_META } from "@/data/items";
 import { ItemCard } from "@/components/ItemCard";
+import { CharacterHeroPreview } from "@/components/CharacterHeroPreview";
 import { SURVIVAL_STATS } from "@/data/survival";
 import { MAPS } from "@/data/maps";
 
@@ -22,7 +23,7 @@ export default function HomePage() {
       {/* HERO ─────────────────────────────────────── */}
       <section className="relative panel panel--cut overflow-hidden">
         <div className="absolute inset-0 crosshatch opacity-40" aria-hidden />
-        <div className="relative px-6 sm:px-12 py-12 sm:py-20 grid lg:grid-cols-[1fr_320px] gap-8 items-center">
+        <div className="relative px-6 sm:px-12 py-12 sm:py-16 grid lg:grid-cols-[1fr_340px] gap-8 items-start">
           <div className="space-y-5">
             <span className="tape-label">CLASSIF · MANUAL DE CAMPO 0427</span>
             <h1 className="text-camo">
@@ -49,46 +50,57 @@ export default function HomePage() {
                 ZONAS DE LOOT
               </Link>
             </div>
+
+            {/* Status do Survivor (ficha de mecânicas) */}
+            <div className="panel mt-6 max-w-xl">
+              <div className="panel-header">
+                <span className="panel-header__title">Status do Survivor</span>
+                <span className="panel-header__meta">REFERÊNCIA</span>
+              </div>
+              <div className="panel-body space-y-3">
+                {SURVIVAL_STATS.slice(0, 5).map((s) => {
+                  const pct =
+                    s.slug === "blood"
+                      ? 78
+                      : s.slug === "energy"
+                      ? 62
+                      : s.slug === "water"
+                      ? 45
+                      : s.slug === "health"
+                      ? 88
+                      : 70;
+                  const fill =
+                    s.tone === "blood"
+                      ? "stat-row__fill--blood"
+                      : s.tone === "brass"
+                      ? "stat-row__fill--brass"
+                      : "";
+                  return (
+                    <div key={s.slug} className="stat-row">
+                      <span className="stat-row__label">{s.name}</span>
+                      <span className="stat-row__bar">
+                        <span
+                          className={`stat-row__fill ${fill}`}
+                          style={{ width: `${pct}%` }}
+                        />
+                      </span>
+                      <span className="stat-row__value">{pct}%</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
-          <div className="hidden lg:block panel">
-            <div className="panel-header">
-              <span className="panel-header__title">Status do Survivor</span>
-              <span className="panel-header__meta">LIVE</span>
-            </div>
-            <div className="panel-body space-y-3">
-              {SURVIVAL_STATS.slice(0, 5).map((s) => {
-                const pct =
-                  s.slug === "blood"
-                    ? 78
-                    : s.slug === "energy"
-                    ? 62
-                    : s.slug === "water"
-                    ? 45
-                    : s.slug === "health"
-                    ? 88
-                    : 70;
-                const fill =
-                  s.tone === "blood"
-                    ? "stat-row__fill--blood"
-                    : s.tone === "brass"
-                    ? "stat-row__fill--brass"
-                    : "";
-                return (
-                  <div key={s.slug} className="stat-row">
-                    <span className="stat-row__label">{s.name}</span>
-                    <span className="stat-row__bar">
-                      <span
-                        className={`stat-row__fill ${fill}`}
-                        style={{ width: `${pct}%` }}
-                      />
-                    </span>
-                    <span className="stat-row__value">{pct}%</span>
-                  </div>
-                );
-              })}
-            </div>
+          {/* Sidebar: personagem do user */}
+          <div className="hidden lg:block">
+            <CharacterHeroPreview />
           </div>
+        </div>
+
+        {/* Mobile: personagem abaixo do hero */}
+        <div className="lg:hidden px-6 pb-8">
+          <CharacterHeroPreview />
         </div>
       </section>
 
