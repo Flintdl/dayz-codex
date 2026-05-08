@@ -12,6 +12,9 @@ const cspProd = [
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data: blob:",
   "connect-src 'self'",
+  // Permite embed do iZurvive em /mapa-oficial — fonte oficial da comunidade.
+  // Single-origin allowlist; sandbox aplicado no iframe ainda restringe.
+  "frame-src https://www.izurvive.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

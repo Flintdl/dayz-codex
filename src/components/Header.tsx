@@ -10,6 +10,7 @@ const NAV = [
   { href: "/sobrevivencia", label: "Sobrevivência", icon: "band-aid" },
   { href: "/base-building", label: "Base", icon: "fence" },
   { href: "/mapas", label: "Mapas", icon: "map" },
+  { href: "/mapa-oficial", label: "iZurvive", icon: "marker" },
   { href: "/mapa-interativo", label: "Tático", icon: "map-marker" },
 ];
 

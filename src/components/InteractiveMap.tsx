@@ -225,11 +225,18 @@ export function InteractiveMap({ initialMap = "chernarus" }: Props) {
     };
   }, [activeMap]);
 
-  // Render markers
+  // Render markers — NÃO depende de `selected` pra evitar rebuild a cada click
   useEffect(() => {
+    let cancelled = false;
     (async () => {
-      if (!layerRef.current || !mapInstanceRef.current) return;
       const L = await import("leaflet");
+      // Polling minimal por map ready (refs são setadas após L.map() async)
+      let tries = 0;
+      while (!layerRef.current && tries < 50) {
+        await new Promise((r) => setTimeout(r, 30));
+        tries++;
+      }
+      if (cancelled || !layerRef.current) return;
       const layer = layerRef.current as ReturnType<typeof L.layerGroup>;
       layer.clearLayers();
 
@@ -240,23 +247,20 @@ export function InteractiveMap({ initialMap = "chernarus" }: Props) {
 
       for (const m of all) {
         const meta = TYPE_META[m.type];
-        const isSelected = selected?.id === m.id;
-        const size = isSelected ? 22 : 16;
         const icon = L.divIcon({
-          className: `dz-marker${isSelected ? " dz-marker--active" : ""}`,
+          className: "dz-marker",
           html: `<span style="background:${meta.color};border:2px solid #07080a;box-shadow:0 0 0 1px ${meta.color}66"></span>`,
-          iconSize: [size, size],
-          iconAnchor: [size / 2, size / 2],
+          iconSize: [18, 18],
+          iconAnchor: [9, 9],
         });
 
         const lm = L.marker([m.y, m.x], { icon }).addTo(layer);
         lm.on("click", (ev: { originalEvent: { stopPropagation(): void } }) => {
-          // Bloqueia o "criar marker" ao clicar num existente
           ev.originalEvent.stopPropagation();
           const isCustom = !("preset" in m && m.preset);
           const lootTiers: LootTier[] = "lootTiers" in m && Array.isArray(m.lootTiers)
             ? (m.lootTiers as LootTier[])
-            : []; // custom markers não têm tier; painel mostra só info
+            : [];
           setSelected({
             id: m.id,
             label: m.label,
@@ -268,7 +272,10 @@ export function InteractiveMap({ initialMap = "chernarus" }: Props) {
         });
       }
     })();
-  }, [markers, activeMap, filter, selected]);
+    return () => {
+      cancelled = true;
+    };
+  }, [markers, activeMap, filter]);
 
   function saveMarker() {
     if (!editing) return;
@@ -454,8 +461,8 @@ export function InteractiveMap({ initialMap = "chernarus" }: Props) {
       <div className="grid lg:grid-cols-[1fr_360px] gap-4">
         <div
           ref={containerRef}
-          className="border border-[var(--c-border)] bg-[var(--c-bg-deep)]"
-          style={{ height: "75vh", minHeight: 500 }}
+          className="border border-[var(--c-border)] bg-[var(--c-bg-deep)] relative overflow-hidden"
+          style={{ height: "70vh", minHeight: 480, isolation: "isolate", zIndex: 0 }}
         />
 
         <aside className="panel min-h-[500px] max-h-[75vh] flex flex-col">

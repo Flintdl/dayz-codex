@@ -670,10 +670,19 @@ i[class*=" fi-rr-"] {
   color: transparent;
 }
 
-/* Leaflet — overrides pra combinar com tema */
+/* Leaflet — overrides pra combinar com tema + impedir overflow no layout */
 .leaflet-container {
   background: #07080a !important;
   font-family: var(--font-mono) !important;
+  /* Mantém os tiles/markers dentro do próprio container — Leaflet usa
+     z-index 400-700 internamente; isolation:isolate no container pai
+     já contém isso. */
+}
+.leaflet-pane,
+.leaflet-control,
+.leaflet-tile-container,
+.leaflet-overlay-pane {
+  z-index: auto !important;
 }
 .leaflet-popup-content-wrapper {
   background: var(--c-surface-2) !important;

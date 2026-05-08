@@ -1,0 +1,6 @@
+{
+  "_comment": "Map slug→URL ou caminho local /public para forçar imagem específica",
+  "_examples": {
+    "m4-a1": "https://exemplo.com/m4.png"
+  }
+}

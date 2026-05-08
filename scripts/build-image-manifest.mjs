@@ -19,12 +19,13 @@ const manifest = {};
 try {
   const files = await fs.readdir(itemsDir);
   for (const f of files) {
-    const m = f.match(/^(.+)\.(png|jpe?g|webp|gif|avif)$/i);
+    const m = f.match(/^(.+)\.(png|jpe?g|webp|gif|avif|svg)$/i);
     if (!m) continue;
     const slug = m[1];
     const ext = m[2].toLowerCase() === "jpeg" ? "jpg" : m[2].toLowerCase();
-    // Se o mesmo slug existe em múltiplos formatos, prefere ordem: png, webp, jpg, gif, avif
-    const priority = { png: 0, webp: 1, jpg: 2, gif: 3, avif: 4 };
+    // Se o mesmo slug existe em múltiplos formatos, prefere ordem:
+    // png, webp, jpg, gif, avif (real photo); svg só se não houver foto
+    const priority = { png: 0, webp: 1, jpg: 2, gif: 3, avif: 4, svg: 9 };
     if (!manifest[slug] || priority[ext] < priority[manifest[slug]]) {
       manifest[slug] = ext;
     }
