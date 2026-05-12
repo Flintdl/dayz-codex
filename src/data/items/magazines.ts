@@ -197,6 +197,90 @@ export const MAGAZINES: Item[] = [
     stats: { slots: { w: 1, h: 1 }, weightG: 90 },
     relations: { compatibleWith: [{ to: "glock-19" }], requires: [{ to: "9x19" }] },
   },
+  {
+    slug: "mag-fal-20rd",
+    name: "FAL Mag (20rnd)",
+    category: "magazine",
+    icon: "boxes",
+    rarity: "very_rare",
+    loot: ["tier3"],
+    summary: "Carregador FAL/LAR — 20 tiros 7.62×51 NATO.",
+    description:
+      "Carregador metálico FAL — 20 cartuchos 7.62×51. Pesado, característico do battle rifle. Compatível com LAR (FAL) do roster vanilla.",
+    stats: { slots: { w: 1, h: 2 }, weightG: 350 },
+    relations: {
+      compatibleWith: [{ to: "lar" }],
+      requires: [{ to: "762x51" }],
+    },
+  },
+  {
+    slug: "mag-famas-25rd",
+    name: "FAMAS Mag (25rnd)",
+    category: "magazine",
+    icon: "boxes",
+    rarity: "rare",
+    loot: ["tier3"],
+    summary: "Carregador FAMAS F1 — 25 tiros 5.56.",
+    description:
+      "Carregador dedicado FAMAS — 25 rounds 5.56×45. Não compatível com STANAG. Procure junto à arma em loot tier3.",
+    stats: { slots: { w: 1, h: 2 }, weightG: 220 },
+    relations: {
+      compatibleWith: [{ to: "famas-f1" }],
+      requires: [{ to: "556x45-ball" }],
+    },
+  },
+  {
+    slug: "mag-aug-30rd",
+    name: "AUG Mag (30rnd)",
+    category: "magazine",
+    icon: "boxes",
+    rarity: "rare",
+    loot: ["tier3"],
+    summary: "Carregador AUG A1 — 30 tiros 5.56, transparente.",
+    description:
+      "Mag transparente do AUG — vê round count visualmente. Polímero translúcido permite checagem rápida de munição. Não compatível com STANAG.",
+    stats: { slots: { w: 1, h: 2 }, weightG: 200 },
+    relations: {
+      compatibleWith: [{ to: "aug-a1" }],
+      requires: [{ to: "556x45-ball" }],
+    },
+  },
+  {
+    slug: "speedloader-magnum",
+    name: "Speedloader Magnum (.357)",
+    category: "magazine",
+    subcategory: "Speedloader",
+    icon: "boxes",
+    rarity: "uncommon",
+    loot: ["police", "hunting"],
+    summary: "Carrega 6 rounds .357 simultaneamente no cilindro.",
+    description:
+      "Carrega 6 rounds .357 simultaneamente no cilindro. Reduz reload de 6s pra 2s.",
+    stats: { slots: { w: 1, h: 1 }, weightG: 80 },
+    relations: {
+      compatibleWith: [{ to: "magnum" }],
+      requires: [{ to: "357mag" }],
+    },
+    tags: ["speedloader", "revolver"],
+  },
+  {
+    slug: "speedloader-ij70",
+    name: "Speedloader IJ-70",
+    category: "magazine",
+    subcategory: "Speedloader",
+    icon: "boxes",
+    rarity: "uncommon",
+    loot: ["police"],
+    summary: "Acelera reload de pistolas mesmo com mag drop.",
+    description:
+      "Speedloader pistol — accelera reload mesmo de pistolas com mag drop.",
+    stats: { slots: { w: 1, h: 1 }, weightG: 70 },
+    relations: {
+      compatibleWith: [{ to: "ij70-mag" }],
+      requires: [{ to: "9x18" }],
+    },
+    tags: ["speedloader", "pistol"],
+  },
 ];
 
 export const ATTACHMENTS: Item[] = [
@@ -403,5 +487,209 @@ export const ATTACHMENTS: Item[] = [
     description: "Ajusta comprimento por preferência.",
     stats: { slots: { w: 2, h: 1 }, weightG: 400 },
     relations: { compatibleWith: [{ to: "m4-a1" }] },
+  },
+  {
+    slug: "holosight",
+    name: "Holosight",
+    category: "attachment",
+    subcategory: "Ótica",
+    icon: "crosshairs",
+    rarity: "rare",
+    loot: ["military", "tier2"],
+    summary:
+      "Ponto vermelho holográfico — CQB e médio alcance, rail picatinny.",
+    description:
+      "Ponto vermelho holográfico. Mira rápida CQB-200m. Aceita em M4, AKM, SVD modificada. Sem magnificação — combina com magnifier flip-up para alcance maior.",
+    stats: { slots: { w: 2, h: 1 }, weightG: 250 },
+    relations: {
+      compatibleWith: [
+        { to: "m4-a1" },
+        { to: "akm" },
+        { to: "ka-101" },
+        { to: "cz-bren-2" },
+        { to: "magnifier-3x", note: "combo flip-up atrás" },
+      ],
+    },
+    tags: ["optic", "red-dot", "cqb"],
+  },
+  {
+    slug: "magnifier-3x",
+    name: "Magnifier 3×",
+    category: "attachment",
+    subcategory: "Ótica",
+    icon: "crosshairs",
+    rarity: "rare",
+    loot: ["tier3"],
+    summary:
+      "Flip-up 3× pivota atrás do holosight — combo CQB + médio alcance.",
+    description:
+      "Magnifier pivota atrás do holosight/red dot — combo CQB + médio alcance. Sem retículo próprio: usa o do red-dot da frente. Pivot lateral em ~1s.",
+    stats: { slots: { w: 2, h: 1 }, weightG: 280 },
+    relations: {
+      compatibleWith: [{ to: "holosight" }, { to: "kobra-sight" }],
+    },
+    tags: ["optic", "magnifier", "flip-up"],
+  },
+  {
+    slug: "nv-monocle",
+    name: "NV Monocle",
+    category: "attachment",
+    subcategory: "Visão Noturna",
+    icon: "eye",
+    rarity: "legendary",
+    loot: ["military_high", "tier4"],
+    summary:
+      "Visão noturna monocular — 200m de visão em sessões noturnas.",
+    description:
+      "Visão noturna monocular. Em night sessions, ganha 200m de visão sobre flashlight. Battery: 10 min. Headstrap dedicado ou mount em capacete tático.",
+    stats: { slots: { w: 2, h: 2 }, weightG: 600 },
+    notes: [
+      "Consome bateria 9V rapidamente — leve sobressalentes.",
+      "Apenas um olho — perspective monocular dificulta julgamento de distância.",
+    ],
+    tags: ["nvg", "night", "endgame"],
+  },
+  {
+    slug: "laser-sight-red",
+    name: "Laser Sight (Vermelho)",
+    category: "attachment",
+    subcategory: "Auxiliar",
+    icon: "target",
+    rarity: "uncommon",
+    loot: ["military", "police"],
+    summary:
+      "Ponto laser vermelho rail — hip-fire e mira rápida em baixa luz.",
+    description:
+      "Ponto laser visível em condições de baixa luz — útil hip-fire e mira rápida. Battery: 60 min. Denuncia posição em PvP noturno — use com cuidado.",
+    stats: { slots: { w: 1, h: 1 }, weightG: 80 },
+    notes: [
+      "Laser visível pelo inimigo em sessão noturna — desligue em stalk.",
+    ],
+    relations: {
+      compatibleWith: [
+        { to: "m4-a1" },
+        { to: "ka-101" },
+        { to: "cz-bren-2" },
+        { to: "ris-handguard" },
+      ],
+    },
+    tags: ["laser", "rail", "aim"],
+  },
+  {
+    slug: "muzzle-brake-akm",
+    name: "Muzzle Brake AKM",
+    category: "attachment",
+    subcategory: "Boca de Cano",
+    icon: "settings",
+    rarity: "uncommon",
+    loot: ["military"],
+    summary:
+      "Compensador AKM — reduz recoil vertical em ~15%. Não suprime som.",
+    description:
+      "Reduz recuo vertical do AKM em ~15%. Não suprime som — só estabiliza. Direciona gases lateralmente, aumentando barulho percebido por vizinhos.",
+    stats: { slots: { w: 1, h: 1 }, weightG: 90 },
+    relations: { compatibleWith: [{ to: "akm" }, { to: "ka-m" }] },
+    tags: ["muzzle", "recoil", "ak"],
+  },
+  {
+    slug: "muzzle-brake-m4",
+    name: "Birdcage M4",
+    category: "attachment",
+    subcategory: "Boca de Cano",
+    icon: "settings",
+    rarity: "uncommon",
+    loot: ["military"],
+    summary:
+      "Flash hider M4 — reduz flash visível e estabiliza o primeiro tiro.",
+    description:
+      "Birdcage flash hider do M4 — reduz flash visível à noite e estabiliza primeiro tiro. Não suprime som. Padrão NATO — também compatível com KA-101.",
+    stats: { slots: { w: 1, h: 1 }, weightG: 70 },
+    relations: { compatibleWith: [{ to: "m4-a1" }, { to: "m16-a2" }, { to: "ka-101" }] },
+    tags: ["muzzle", "flash-hider", "nato"],
+  },
+  {
+    slug: "bipod-rifle",
+    name: "Bipé Sniper",
+    category: "attachment",
+    subcategory: "Estabilizador",
+    icon: "settings",
+    rarity: "rare",
+    loot: ["military", "tier3"],
+    summary:
+      "Bipé sob handguard — reduz sway em ~70% deployed (prone only).",
+    description:
+      "Bipé montado sob handguard — estabiliza tiro prone. Reduz sway em ~70% quando deployed. Não funciona standing.",
+    stats: { slots: { w: 1, h: 2 }, weightG: 600 },
+    relations: { compatibleWith: [{ to: "svd" }, { to: "mosin-9130" }, { to: "m4-a1" }] },
+    tags: ["bipod", "prone", "sniper"],
+  },
+  {
+    slug: "vss-scope",
+    name: "PSO-1-M2 (VSS Dedicada)",
+    category: "attachment",
+    subcategory: "Ótica",
+    icon: "search",
+    rarity: "rare",
+    loot: ["military_high", "tier3"],
+    summary: "PSO modificada pra VSS/AS-VAL — 4× iluminado.",
+    description:
+      "PSO modificada pra VSS/AS-VAL — illuminated reticle. 4× magnification.",
+    stats: { slots: { w: 2, h: 1 }, weightG: 540 },
+    relations: { compatibleWith: [{ to: "vss" }, { to: "as-val" }] },
+    tags: ["scope", "subsonic", "vss"],
+  },
+  {
+    slug: "scope-mount-rail",
+    name: "Mount Picatinny (Adaptador)",
+    category: "attachment",
+    subcategory: "Mount",
+    icon: "settings",
+    rarity: "uncommon",
+    loot: ["military"],
+    summary: "Adaptador rail — habilita ACOG/holosight em AKM/SVD.",
+    description:
+      "Adaptador rail pra montar ACOG/holosight em rifles sem picatinny nativo (ex: AKM, SVD).",
+    stats: { slots: { w: 1, h: 1 }, weightG: 140 },
+    relations: {
+      compatibleWith: [
+        { to: "akm" },
+        { to: "svd" },
+        { to: "acog-scope", note: "habilita ACOG em AK" },
+        { to: "holosight" },
+      ],
+    },
+    tags: ["mount", "rail", "adapter"],
+  },
+  {
+    slug: "tactical-grip-angled",
+    name: "Foregrip Angular",
+    category: "attachment",
+    subcategory: "Grip",
+    icon: "settings",
+    rarity: "uncommon",
+    loot: ["military", "police"],
+    summary: "Reduz sway lateral em movimento — tradeoff com vertical.",
+    description:
+      "Foregrip angular — reduz sway lateral em movimento. Tradeoff com vertical grip.",
+    stats: { slots: { w: 1, h: 1 }, weightG: 110 },
+    relations: {
+      compatibleWith: [{ to: "m4-a1" }, { to: "ka-101" }],
+    },
+    tags: ["grip", "sway", "movement"],
+  },
+  {
+    slug: "muzzle-brake-svd",
+    name: "Compensador SVD",
+    category: "attachment",
+    subcategory: "Boca de Cano",
+    icon: "settings",
+    rarity: "rare",
+    loot: ["military", "tier3"],
+    summary: "Reduz recuo do SVD em ~25% — aumenta flash à noite.",
+    description:
+      "Reduz recuo do SVD em ~25%. Aumenta flash signature à noite.",
+    stats: { slots: { w: 1, h: 1 }, weightG: 120 },
+    relations: { compatibleWith: [{ to: "svd" }] },
+    tags: ["muzzle", "recoil", "svd"],
   },
 ];

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <pattern id="g-welding-mask" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#9aaa6622" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="256" height="256" fill="#161a14"/>
+  <rect width="256" height="256" fill="url(#g-welding-mask)"/>
+  <rect x="0" y="0" width="256" height="32" fill="#9aaa6618"/>
+  <text x="12" y="20" font-family="JetBrains Mono, monospace" font-size="11" fill="#9aaa66" letter-spacing="1.5">CLOTHING</text>
+  <text x="244" y="20" font-family="JetBrains Mono, monospace" font-size="9" fill="#9aaa6680" text-anchor="end">N/A</text>
+  <g color="#9aaa6680" transform="translate(0, -10)"><path d="M100,100 L156,100 L160,170 L96,170 Z" fill="currentColor"/></g>
+  <line x1="40" y1="190" x2="216" y2="190" stroke="#9aaa6640" stroke-width="1"/>
+  <text x="128" y="212" font-family="Black Ops One, sans-serif" font-size="14" fill="#9aaa66" text-anchor="middle" letter-spacing="2">MÁSCARA DE SOLDA</text>
+  
+</svg>

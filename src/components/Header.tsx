@@ -32,6 +32,7 @@ const SECTIONS: NavSection[] = [
       { href: "/mapa-oficial", label: "iZurvive (oficial)", icon: "map-marker" },
       { href: "/mapa-interativo", label: "Tático (markers)", icon: "map" },
       { href: "/mapas", label: "Zonas (texto)", icon: "info" },
+      { href: "/servidores", label: "Servidores ao vivo", icon: "globe" },
     ],
   },
   {

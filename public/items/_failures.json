@@ -1,547 +1,592 @@
 [
   {
-    "slug": "baseball-bat",
-    "name": "Baseball Bat",
+    "slug": "ammo-762x25",
+    "name": "7.62×25mm Tokarev",
     "reason": "no validated match"
   },
   {
-    "slug": "bone-knife",
-    "name": "Bone Knife",
+    "slug": "leather-jacket-crafted",
+    "name": "Jaqueta de Couro (Craftada)",
     "reason": "no validated match"
   },
   {
-    "slug": "long-stick",
-    "name": "Long Stick",
+    "slug": "leather-pants",
+    "name": "Calça de Couro",
     "reason": "no validated match"
   },
   {
-    "slug": "machete",
-    "name": "Machete",
+    "slug": "leather-vest",
+    "name": "Colete de Couro",
     "reason": "no validated match"
   },
   {
-    "slug": "telescopic-baton",
-    "name": "Telescopic Baton",
+    "slug": "leather-belt",
+    "name": "Cinto de Couro",
     "reason": "no validated match"
   },
   {
-    "slug": "9x18",
-    "name": "9×18mm Makarov",
+    "slug": "eye-patch",
+    "name": "Tampão de Olho",
     "reason": "no validated match"
   },
   {
-    "slug": "arrow",
-    "name": "Seta de Madeira",
+    "slug": "plaid-shirt-red",
+    "name": "Camisa Xadrez Vermelha",
     "reason": "no validated match"
   },
   {
-    "slug": "improvised-arrow",
-    "name": "Seta Improvisada",
+    "slug": "hoodie-black",
+    "name": "Moletom com Capuz Preto",
     "reason": "no validated match"
   },
   {
-    "slug": "ballistic-plate",
-    "name": "Placa Balística",
+    "slug": "t-shirt-white",
+    "name": "Camiseta Branca",
     "reason": "no validated match"
   },
   {
-    "slug": "ballistic-helmet",
-    "name": "Capacete Balístico",
+    "slug": "jeans-blue",
+    "name": "Calça Jeans Azul",
     "reason": "no validated match"
   },
   {
-    "slug": "combat-pants",
-    "name": "Calça de Combate",
+    "slug": "hiking-pants-green",
+    "name": "Calça de Caminhada Verde",
     "reason": "no validated match"
   },
   {
-    "slug": "improvised-backpack",
-    "name": "Mochila Improvisada",
+    "slug": "tactical-jacket-camo",
+    "name": "Jaqueta Tática Camuflada",
     "reason": "no validated match"
   },
   {
-    "slug": "mountain-backpack",
-    "name": "Mochila de Montanha",
+    "slug": "beanie",
+    "name": "Touca de Lã",
     "reason": "no validated match"
   },
   {
-    "slug": "assault-backpack",
-    "name": "Mochila de Assalto",
+    "slug": "cowboy-hat",
+    "name": "Chapéu de Cowboy",
     "reason": "no validated match"
   },
   {
-    "slug": "metal-wire",
-    "name": "Arame Metálico",
+    "slug": "bunny-hat",
+    "name": "Touca de Coelhinho",
     "reason": "no validated match"
   },
   {
-    "slug": "barbed-wire",
-    "name": "Arame Farpado",
+    "slug": "payday-mask",
+    "name": "Máscara de Heister",
     "reason": "no validated match"
   },
   {
-    "slug": "feather",
-    "name": "Pena",
+    "slug": "tactical-gloves-black",
+    "name": "Luvas Táticas Pretas",
     "reason": "no validated match"
   },
   {
-    "slug": "combination-lock",
-    "name": "Cadeado de Combinação",
+    "slug": "leather-gloves-brown",
+    "name": "Luvas de Couro Marrom",
     "reason": "no validated match"
   },
   {
-    "slug": "wooden-fence-kit",
-    "name": "Kit Cerca de Madeira",
+    "slug": "working-gloves",
+    "name": "Luvas de Trabalho",
     "reason": "no validated match"
   },
   {
-    "slug": "tarp",
-    "name": "Lona (Tarp)",
+    "slug": "military-boots-black",
+    "name": "Botas Militares Pretas",
     "reason": "no validated match"
   },
   {
-    "slug": "sea-chest",
-    "name": "Baú de Mar (Sea Chest)",
+    "slug": "wellies-green",
+    "name": "Botas de Borracha",
     "reason": "no validated match"
   },
   {
-    "slug": "wooden-floor",
-    "name": "Piso de Madeira",
+    "slug": "drybag-orange",
+    "name": "Drybag Laranja",
     "reason": "no validated match"
   },
   {
-    "slug": "wooden-stairs",
-    "name": "Escada de Madeira",
+    "slug": "weapon-case",
+    "name": "Estojo de Armas",
     "reason": "no validated match"
   },
   {
-    "slug": "platform-kit",
-    "name": "Kit de Plataforma",
+    "slug": "t-shirt-blue",
+    "name": "Camiseta Azul",
     "reason": "no validated match"
   },
   {
-    "slug": "adhesive-bandage",
-    "name": "Bandagem Adesiva",
+    "slug": "polo-shirt-white",
+    "name": "Camisa Polo Branca",
     "reason": "no validated match"
   },
   {
-    "slug": "stethoscope",
-    "name": "Estetoscópio",
+    "slug": "hoodie-grey",
+    "name": "Moletom com Capuz Cinza",
     "reason": "no validated match"
   },
   {
-    "slug": "frying-pan",
-    "name": "Frigideira",
+    "slug": "hoodie-red",
+    "name": "Moletom com Capuz Vermelho",
     "reason": "no validated match"
   },
   {
-    "slug": "honey-jar",
-    "name": "Pote de Mel",
+    "slug": "hoodie-blue",
+    "name": "Moletom com Capuz Azul",
     "reason": "no validated match"
   },
   {
-    "slug": "powdered-eggs",
-    "name": "Ovos em Pó",
+    "slug": "sweater-red",
+    "name": "Suéter de Lã Vermelho",
     "reason": "no validated match"
   },
   {
-    "slug": "marmalade",
-    "name": "Geleia",
+    "slug": "cargo-pants-green",
+    "name": "Calça Cargo Verde",
     "reason": "no validated match"
   },
   {
-    "slug": "sausage",
-    "name": "Linguiça",
+    "slug": "raincoat-yellow",
+    "name": "Capa de Chuva Amarela",
     "reason": "no validated match"
   },
   {
-    "slug": "pasta-can",
-    "name": "Macarrão Enlatado (Spagheroni)",
+    "slug": "surgical-mask-blue",
+    "name": "Máscara Cirúrgica Azul",
     "reason": "no validated match"
   },
   {
-    "slug": "wild-berry",
-    "name": "Frutos Silvestres",
+    "slug": "respirator",
+    "name": "Respirador Industrial",
     "reason": "no validated match"
   },
   {
-    "slug": "nv-goggles",
-    "name": "Óculos de Visão Noturna",
+    "slug": "welding-mask",
+    "name": "Máscara de Solda",
     "reason": "no validated match"
   },
   {
-    "slug": "burlap-sack",
-    "name": "Saco de Estopa",
+    "slug": "mountain-backpack-blue",
+    "name": "Mochila de Montanha Azul",
     "reason": "no validated match"
   },
   {
-    "slug": "improvised-suppressor",
-    "name": "Supressor Improvisado",
+    "slug": "mountain-backpack-orange",
+    "name": "Mochila de Montanha Laranja",
     "reason": "no validated match"
   },
   {
-    "slug": "portable-gas-stove",
-    "name": "Fogareiro Portátil",
+    "slug": "mountain-backpack-red",
+    "name": "Mochila de Montanha Vermelha",
     "reason": "no validated match"
   },
   {
-    "slug": "gas-canister",
-    "name": "Cartucho de Gás",
+    "slug": "hunter-backpack-green",
+    "name": "Mochila de Caça Verde",
     "reason": "no validated match"
   },
   {
-    "slug": "leather-jacket",
-    "name": "Jaqueta de Couro",
+    "slug": "assault-backpack-black",
+    "name": "Mochila de Assalto Preta",
     "reason": "no validated match"
   },
   {
-    "slug": "mk17-mag",
-    "name": "MK17 Mag (20rnd)",
+    "slug": "assault-backpack-camo",
+    "name": "Mochila de Assalto Camuflada",
     "reason": "no validated match"
   },
   {
-    "slug": "lockpick",
-    "name": "Picadora (Lockpick)",
+    "slug": "halloween-mask-blue",
+    "name": "Máscara de Halloween (Azul)",
     "reason": "no validated match"
   },
   {
-    "slug": "boar",
-    "name": "Javali",
+    "slug": "halloween-mask-green",
+    "name": "Máscara de Halloween (Verde)",
     "reason": "no validated match"
   },
   {
-    "slug": "brown-bear",
-    "name": "Urso Pardo",
+    "slug": "halloween-mask-red",
+    "name": "Máscara de Halloween (Vermelha)",
     "reason": "no validated match"
   },
   {
-    "slug": "rabbit",
-    "name": "Coelho",
+    "slug": "halloween-mask-white",
+    "name": "Máscara de Halloween (Branca)",
     "reason": "no validated match"
   },
   {
-    "slug": "egg",
-    "name": "Ovo",
+    "slug": "halloween-mask-purple",
+    "name": "Máscara de Halloween (Roxa)",
     "reason": "no validated match"
   },
   {
-    "slug": "pig",
-    "name": "Porco",
+    "slug": "party-hat-pink",
+    "name": "Chapéu de Festa (Rosa)",
     "reason": "no validated match"
   },
   {
-    "slug": "plum",
-    "name": "Ameixa",
+    "slug": "party-hat-blue",
+    "name": "Chapéu de Festa (Azul)",
     "reason": "no validated match"
   },
   {
-    "slug": "tuna-can",
-    "name": "Lata de Atum",
+    "slug": "watchtower-kit",
+    "name": "Kit Torre de Vigia",
     "reason": "no validated match"
   },
   {
-    "slug": "beans-can",
-    "name": "Feijão Enlatado",
+    "slug": "wooden-fence",
+    "name": "Cerca de Madeira (estrutura)",
     "reason": "no validated match"
   },
   {
-    "slug": "sardines-can",
-    "name": "Lata de Sardinhas",
+    "slug": "improvised-shelter",
+    "name": "Abrigo Improvisado",
     "reason": "no validated match"
   },
   {
-    "slug": "powdered-milk",
-    "name": "Leite em Pó",
+    "slug": "tanning-tub",
+    "name": "Tanino (Tannin Tub)",
     "reason": "no validated match"
   },
   {
-    "slug": "rice-bag",
-    "name": "Saco de Arroz",
+    "slug": "large-stone",
+    "name": "Pedra Grande",
     "reason": "no validated match"
   },
   {
-    "slug": "raw-steak",
-    "name": "Bife Cru",
+    "slug": "watch",
+    "name": "Relógio de Pulso",
     "reason": "no validated match"
   },
   {
-    "slug": "cooked-steak",
-    "name": "Bife Cozido",
+    "slug": "mirror",
+    "name": "Espelho",
     "reason": "no validated match"
   },
   {
-    "slug": "orange",
-    "name": "Laranja",
+    "slug": "book-fiction",
+    "name": "Livro de Ficção",
     "reason": "no validated match"
   },
   {
-    "slug": "potato",
-    "name": "Batata",
+    "slug": "book-medical",
+    "name": "Livro de Medicina",
     "reason": "no validated match"
   },
   {
-    "slug": "pepper",
-    "name": "Pimentão",
+    "slug": "notebook",
+    "name": "Caderno em Branco",
     "reason": "no validated match"
   },
   {
-    "slug": "pumpkin-seeds",
-    "name": "Sementes de Abóbora",
+    "slug": "pen-blue",
+    "name": "Caneta Azul",
     "reason": "no validated match"
   },
   {
-    "slug": "tomato-seeds",
-    "name": "Sementes de Tomate",
+    "slug": "flare-red",
+    "name": "Sinalizador Vermelho",
     "reason": "no validated match"
   },
   {
-    "slug": "potato-seeds",
-    "name": "Tubérculos de Batata",
+    "slug": "flare-green",
+    "name": "Sinalizador Verde",
     "reason": "no validated match"
   },
   {
-    "slug": "zucchini-seeds",
-    "name": "Sementes de Abobrinha",
+    "slug": "flare-white",
+    "name": "Sinalizador Branco",
     "reason": "no validated match"
   },
   {
-    "slug": "pepper-seeds",
-    "name": "Sementes de Pimentão",
+    "slug": "firecracker",
+    "name": "Fogos de Artifício",
     "reason": "no validated match"
   },
   {
-    "slug": "macromyces-mushroom",
-    "name": "Cogumelo Macromyces",
+    "slug": "lamp-oil",
+    "name": "Óleo de Lampião",
     "reason": "no validated match"
   },
   {
-    "slug": "raw-chicken",
-    "name": "Frango Cru",
+    "slug": "signal-pistol",
+    "name": "Pistola Sinalizadora",
     "reason": "no validated match"
   },
   {
-    "slug": "cooked-chicken",
-    "name": "Frango Cozido",
+    "slug": "flare-cartridge",
+    "name": "Cartucho de Sinalizador",
     "reason": "no validated match"
   },
   {
-    "slug": "raw-fish",
-    "name": "Peixe Cru",
+    "slug": "football",
+    "name": "Bola de Futebol Americano",
     "reason": "no validated match"
   },
   {
-    "slug": "fish-fillet-cooked",
-    "name": "Filé de Peixe Cozido",
+    "slug": "basketball",
+    "name": "Bola de Basquete",
     "reason": "no validated match"
   },
   {
-    "slug": "raw-rabbit",
-    "name": "Coelho Cru",
+    "slug": "guitar-acoustic",
+    "name": "Violão Acústico",
     "reason": "no validated match"
   },
   {
-    "slug": "rabbit-pelt",
-    "name": "Pele de Coelho",
+    "slug": "christmas-tree-small",
+    "name": "Árvore de Natal (Pequena)",
     "reason": "no validated match"
   },
   {
-    "slug": "cow-pelt",
-    "name": "Pele de Vaca",
+    "slug": "xmas-lights",
+    "name": "Cordão de Luzes Natalinas",
     "reason": "no validated match"
   },
   {
-    "slug": "raw-meat-pile",
-    "name": "Carne Bruta (Steak)",
+    "slug": "chemlight-red",
+    "name": "Chemlight Vermelho",
     "reason": "no validated match"
   },
   {
-    "slug": "spaghetti-can",
-    "name": "Macarrão Enlatado",
+    "slug": "chemlight-green",
+    "name": "Chemlight Verde",
     "reason": "no validated match"
   },
   {
-    "slug": "peaches-can",
-    "name": "Pêssego em Calda",
+    "slug": "chemlight-blue",
+    "name": "Chemlight Azul",
     "reason": "no validated match"
   },
   {
-    "slug": "dog-food",
-    "name": "Ração de Cão",
+    "slug": "chemlight-yellow",
+    "name": "Chemlight Amarelo",
     "reason": "no validated match"
   },
   {
-    "slug": "cereal-box",
-    "name": "Caixa de Cereal",
+    "slug": "cigarette-pack",
+    "name": "Maço de Cigarros",
     "reason": "no validated match"
   },
   {
-    "slug": "crackers",
-    "name": "Bolacha (Crackers)",
+    "slug": "shaving-razor",
+    "name": "Lâmina de Barbear",
     "reason": "no validated match"
   },
   {
-    "slug": "chocolate",
-    "name": "Barra de Chocolate",
+    "slug": "toilet-paper",
+    "name": "Papel Higiênico",
     "reason": "no validated match"
   },
   {
-    "slug": "chips",
-    "name": "Batata Frita (Saco)",
+    "slug": "soap-bar",
+    "name": "Sabão em Barra",
     "reason": "no validated match"
   },
   {
-    "slug": "pasta",
-    "name": "Macarrão (Pacote)",
+    "slug": "toothbrush",
+    "name": "Escova de Dentes",
     "reason": "no validated match"
   },
   {
-    "slug": "milk-bottle",
-    "name": "Garrafa de Leite",
+    "slug": "whiskey-bottle",
+    "name": "Garrafa de Whisky",
     "reason": "no validated match"
   },
   {
-    "slug": "stock-folding",
-    "name": "Coronha Dobrável (AK)",
+    "slug": "coffee-can",
+    "name": "Lata de Café",
     "reason": "no validated match"
   },
   {
-    "slug": "rags",
-    "name": "Rasgos de Pano",
+    "slug": "tea-bag",
+    "name": "Saquinho de Chá",
     "reason": "no validated match"
   },
   {
-    "slug": "charcoal-tablets",
-    "name": "Carvão Ativado",
+    "slug": "lard",
+    "name": "Banha",
     "reason": "no validated match"
   },
   {
-    "slug": "saline-iv",
-    "name": "Bag Soro Fisiológico (IV)",
+    "slug": "fat",
+    "name": "Gordura Animal",
     "reason": "no validated match"
   },
   {
-    "slug": "blood-bag",
-    "name": "Bolsa de Sangue (Cheia)",
+    "slug": "intestines",
+    "name": "Vísceras",
     "reason": "no validated match"
   },
   {
-    "slug": "blood-test-kit",
-    "name": "Kit Tipo Sanguíneo",
+    "slug": "pig-pelt",
+    "name": "Pele de Porco",
     "reason": "no validated match"
   },
   {
-    "slug": "fists",
-    "name": "Punhos",
+    "slug": "cured-pig-pelt",
+    "name": "Pele de Porco Curtida",
     "reason": "no validated match"
   },
   {
-    "slug": "snowshoes",
-    "name": "Raquetes de Neve",
+    "slug": "cured-wolf-pelt",
+    "name": "Pele de Lobo Curtida",
     "reason": "no validated match"
   },
   {
-    "slug": "fish-trap",
-    "name": "Armadilha de Peixe",
+    "slug": "cured-bear-pelt",
+    "name": "Pele de Urso Curtida",
     "reason": "no validated match"
   },
   {
-    "slug": "snow-goggles",
-    "name": "Óculos de Neve",
+    "slug": "muzzle-brake-m4",
+    "name": "Birdcage M4",
     "reason": "no validated match"
   },
   {
-    "slug": "winter-coat",
-    "name": "Casaco de Inverno",
+    "slug": "bipod-rifle",
+    "name": "Bipé Sniper",
     "reason": "no validated match"
   },
   {
-    "slug": "thermal-blanket",
-    "name": "Manta Térmica",
+    "slug": "tactical-grip-angled",
+    "name": "Foregrip Angular",
     "reason": "no validated match"
   },
   {
-    "slug": "fishing-rod",
-    "name": "Vara de Pescar",
+    "slug": "muzzle-brake-svd",
+    "name": "Compensador SVD",
     "reason": "no validated match"
   },
   {
-    "slug": "worm",
-    "name": "Minhoca (Isca)",
+    "slug": "tourniquet",
+    "name": "Torniquete Elástico",
     "reason": "no validated match"
   },
   {
-    "slug": "fire-axe",
-    "name": "Machado de Bombeiro",
+    "slug": "syringe-empty",
+    "name": "Seringa Vazia (5ml)",
     "reason": "no validated match"
   },
   {
-    "slug": "can-opener",
-    "name": "Abridor de Latas",
+    "slug": "bandage-gauze",
+    "name": "Gaze Estéril",
     "reason": "no validated match"
   },
   {
-    "slug": "sharpening-stone",
-    "name": "Pedra de Amolar",
+    "slug": "elastic-bandage",
+    "name": "Bandagem Elástica (Compressiva)",
     "reason": "no validated match"
   },
   {
-    "slug": "weapon-cleaning-kit",
-    "name": "Kit de Limpeza de Armas",
+    "slug": "aspirin",
+    "name": "Aspirina",
     "reason": "no validated match"
   },
   {
-    "slug": "sewing-kit",
-    "name": "Kit de Costura",
+    "slug": "crampons",
+    "name": "Crampons (Garras de Gelo)",
     "reason": "no validated match"
   },
   {
-    "slug": "leather-sewing-kit",
-    "name": "Kit de Costura de Couro",
+    "slug": "ski-poles",
+    "name": "Bastões de Ski",
     "reason": "no validated match"
   },
   {
-    "slug": "duct-tape",
-    "name": "Fita Adesiva",
+    "slug": "snow-shovel",
+    "name": "Pá de Neve",
     "reason": "no validated match"
   },
   {
-    "slug": "matches",
-    "name": "Caixa de Fósforos",
+    "slug": "hand-warmer-chemical",
+    "name": "Aquecedor Químico de Mão",
     "reason": "no validated match"
   },
   {
-    "slug": "rangefinder",
-    "name": "Telêmetro Laser",
+    "slug": "wool-socks",
+    "name": "Meias de Lã",
     "reason": "no validated match"
   },
   {
-    "slug": "water-purification-tablets",
-    "name": "Pastilhas de Purificação",
+    "slug": "thermal-underwear-top",
+    "name": "Camiseta Térmica (Base)",
     "reason": "no validated match"
   },
   {
-    "slug": "cooking-pot",
-    "name": "Panela de Cozinhar",
+    "slug": "thermal-underwear-bottom",
+    "name": "Calça Térmica (Base)",
     "reason": "no validated match"
   },
   {
-    "slug": "headlight-bulb",
-    "name": "Lâmpada de Farol",
+    "slug": "insulated-canteen",
+    "name": "Cantil Isolado",
     "reason": "no validated match"
   },
   {
-    "slug": "car-trunk",
-    "name": "Porta-Malas",
+    "slug": "balaclava-thermal",
+    "name": "Balaclava Térmica",
     "reason": "no validated match"
   },
   {
-    "slug": "brake-fluid",
-    "name": "Fluido de Freio",
+    "slug": "screwdriver-philips",
+    "name": "Chave Philips",
     "reason": "no validated match"
   },
   {
-    "slug": "glow-plug",
-    "name": "Vela de Aquecimento",
+    "slug": "paint-can-black",
+    "name": "Lata de Tinta Preta",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "paint-can-green",
+    "name": "Lata de Tinta Verde Militar",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "paint-can-brown",
+    "name": "Lata de Tinta Marrom",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "electrical-wire",
+    "name": "Fio Elétrico",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "paracord",
+    "name": "Paracord",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "fishing-bobber",
+    "name": "Boia de Pesca",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "small-gas-canister",
+    "name": "Botijão Pequeno de Gás",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "portable-gas-lamp",
+    "name": "Lampião a Gás",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "truck-cargo",
+    "name": "Caçamba M3S",
+    "reason": "no validated match"
+  },
+  {
+    "slug": "oxygen-tank",
+    "name": "Cilindro de Oxigênio",
     "reason": "no validated match"
   }
 ]

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <pattern id="g-flare-green" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#b6a26a22" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="256" height="256" fill="#1a1f17"/>
+  <rect width="256" height="256" fill="url(#g-flare-green)"/>
+  <rect x="0" y="0" width="256" height="32" fill="#b6a26a18"/>
+  <text x="12" y="20" font-family="JetBrains Mono, monospace" font-size="11" fill="#b6a26a" letter-spacing="1.5">TOOL</text>
+  <text x="244" y="20" font-family="JetBrains Mono, monospace" font-size="9" fill="#b6a26a80" text-anchor="end">N/A</text>
+  <g color="#b6a26a80" transform="translate(0, -10)"><polygon points="100,160 130,90 145,95 115,165" fill="currentColor"/></g>
+  <line x1="40" y1="190" x2="216" y2="190" stroke="#b6a26a40" stroke-width="1"/>
+  <text x="128" y="212" font-family="Black Ops One, sans-serif" font-size="14" fill="#b6a26a" text-anchor="middle" letter-spacing="2">SINALIZADOR</text>
+  <text x="128" y="232" font-family="Black Ops One, sans-serif" font-size="12" fill="#b6a26acc" text-anchor="middle" letter-spacing="1.5">VERDE</text>
+</svg>

@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ITEMS, ITEMS_BY_SLUG } from "@/data/items";
+import { CATEGORY_META, ITEMS, ITEMS_BY_SLUG } from "@/data/items";
 import {
-  CharacterSchema,
   CONDITION_META,
   EQUIPMENT_SLOTS,
   SLOT_META,
@@ -21,6 +20,7 @@ import {
   type Snapshot,
   type Store,
 } from "@/lib/character";
+import { ItemImage } from "./ItemImage";
 
 const CONDITIONS: Condition[] = ["pristine", "worn", "damaged", "badly_damaged", "ruined"];
 
@@ -323,43 +323,90 @@ export function CharacterSheet() {
                   Vazio. Click "+ ADICIONAR" pra incluir items soltos na vest/mochila.
                 </p>
               ) : (
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {store.current.inventory.map((inv) => {
                     const it = ITEMS_BY_SLUG[inv.slug];
                     if (!it) return null;
+                    const totalWeight = (it.stats?.weightG ?? 0) * inv.qty;
                     return (
                       <div
                         key={inv.slug}
-                        className="flex items-center gap-2 p-2 border border-[var(--c-border)] hover:border-[var(--c-olive)]"
+                        className="flex items-center gap-2 p-1.5 border border-[var(--c-border)] hover:border-[var(--c-olive)]"
                       >
-                        <i className={`fi-rr-${it.icon} text-[var(--c-olive-bright)]`} />
-                        <Link
-                          href={`/itens/${inv.slug}`}
-                          className="flex-1 text-sm text-[var(--c-bone)] hover:text-[var(--c-olive-bright)] truncate"
-                        >
-                          {it.name}
-                        </Link>
-                        <input
-                          type="number"
-                          min={1}
-                          max={999}
-                          value={inv.qty}
-                          onChange={(e) => {
-                            const n = Math.max(1, Math.min(999, Math.round(+e.target.value || 1)));
-                            setInventory(
-                              store.current.inventory.map((x) =>
-                                x.slug === inv.slug ? { ...x, qty: n } : x,
-                              ),
-                            );
-                          }}
-                          className="w-14 bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-bone)] px-2 py-1 font-mono text-sm"
+                        <ItemImage
+                          slug={it.slug}
+                          icon={it.icon}
+                          alt={it.name}
+                          size="sm"
+                          className="shrink-0 border border-[var(--c-border)]"
                         />
+                        <div className="flex-1 min-w-0">
+                          <Link
+                            href={`/itens/${inv.slug}`}
+                            className="block text-sm text-[var(--c-bone)] hover:text-[var(--c-olive-bright)] truncate"
+                          >
+                            {it.name}
+                          </Link>
+                          {totalWeight > 0 && (
+                            <div className="text-[0.6rem] font-mono text-[var(--c-ash)]">
+                              {(totalWeight / 1000).toFixed(2)}kg · {it.subcategory ?? it.category}
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex items-center border border-[var(--c-border)]">
+                          <button
+                            onClick={() => {
+                              if (inv.qty <= 1) {
+                                setInventory(store.current.inventory.filter((x) => x.slug !== inv.slug));
+                                return;
+                              }
+                              setInventory(
+                                store.current.inventory.map((x) =>
+                                  x.slug === inv.slug ? { ...x, qty: x.qty - 1 } : x,
+                                ),
+                              );
+                            }}
+                            className="w-6 h-7 text-[var(--c-bone-dim)] hover:text-[var(--c-blood-bright)] hover:bg-[var(--c-surface-3)] font-mono text-sm leading-none"
+                            aria-label="Diminuir quantidade"
+                          >
+                            −
+                          </button>
+                          <input
+                            type="number"
+                            min={1}
+                            max={999}
+                            value={inv.qty}
+                            onChange={(e) => {
+                              const n = Math.max(1, Math.min(999, Math.round(+e.target.value || 1)));
+                              setInventory(
+                                store.current.inventory.map((x) =>
+                                  x.slug === inv.slug ? { ...x, qty: n } : x,
+                                ),
+                              );
+                            }}
+                            className="w-10 bg-[var(--c-bg)] text-[var(--c-bone)] text-center font-mono text-sm border-x border-[var(--c-border)] h-7"
+                          />
+                          <button
+                            onClick={() =>
+                              setInventory(
+                                store.current.inventory.map((x) =>
+                                  x.slug === inv.slug ? { ...x, qty: Math.min(999, x.qty + 1) } : x,
+                                ),
+                              )
+                            }
+                            className="w-6 h-7 text-[var(--c-bone-dim)] hover:text-[var(--c-olive-bright)] hover:bg-[var(--c-surface-3)] font-mono text-sm leading-none"
+                            aria-label="Aumentar quantidade"
+                          >
+                            +
+                          </button>
+                        </div>
                         <button
                           onClick={() =>
                             setInventory(store.current.inventory.filter((x) => x.slug !== inv.slug))
                           }
-                          className="text-xs font-mono text-[var(--c-blood-bright)] hover:underline"
+                          className="text-xs font-mono text-[var(--c-blood-bright)] hover:underline px-1"
                           aria-label="Remover"
+                          title="Remover do inventário"
                         >
                           ✕
                         </button>
@@ -597,60 +644,83 @@ function SlotCard({
   const item = equipped ? ITEMS_BY_SLUG[equipped.slug] : null;
   const cond = equipped ? CONDITION_META[equipped.condition] : null;
 
+  function cycleCondition() {
+    if (!equipped) return;
+    const idx = CONDITIONS.indexOf(equipped.condition);
+    const next = CONDITIONS[(idx + 1) % CONDITIONS.length];
+    onCondition(next);
+  }
+
   return (
-    <div className="border border-[var(--c-border)] bg-[var(--c-bg)] p-3 relative group">
-      <div className="text-[0.65rem] font-mono text-[var(--c-ash)] tracking-[0.18em] mb-2">
-        ◆ {meta.label.toUpperCase()}
+    <div className="border border-[var(--c-border)] bg-[var(--c-bg)] relative group">
+      <div className="flex items-center justify-between px-2.5 pt-2 pb-1">
+        <span className="text-[0.6rem] font-mono text-[var(--c-ash)] tracking-[0.18em]">
+          ◆ {meta.label.toUpperCase()}
+        </span>
+        {item && cond && (
+          <button
+            onClick={cycleCondition}
+            className="text-[0.6rem] font-mono font-bold tracking-wider px-1.5 py-0.5 border leading-none"
+            style={{ color: cond.color, borderColor: cond.color }}
+            title={`${cond.label} — click pra ciclar`}
+          >
+            {cond.abbr}
+          </button>
+        )}
       </div>
       {item ? (
         <>
-          <button onClick={onClick} className="block w-full text-left">
-            <div className="flex items-center gap-2">
-              <i className={`fi-rr-${item.icon} text-[var(--c-olive-bright)] text-xl`} />
+          <button onClick={onClick} className="block w-full text-left px-2.5 pb-2.5">
+            <div className="flex items-center gap-2.5">
+              <ItemImage
+                slug={item.slug}
+                icon={item.icon}
+                alt={item.name}
+                size="sm"
+                className="shrink-0 border border-[var(--c-border)]"
+              />
               <div className="flex-1 min-w-0">
-                <div className="text-sm text-[var(--c-bone)] truncate">{item.name}</div>
+                <div className="text-sm text-[var(--c-bone)] leading-tight line-clamp-2 group-hover:text-[var(--c-olive-bright)]">
+                  {item.name}
+                </div>
                 {item.stats?.weightG !== undefined && (
-                  <div className="text-[0.65rem] font-mono text-[var(--c-ash)]">
+                  <div className="text-[0.65rem] font-mono text-[var(--c-ash)] mt-0.5">
                     {(item.stats.weightG / 1000).toFixed(2)}kg
                   </div>
                 )}
               </div>
             </div>
           </button>
-          <div className="flex items-center justify-between gap-1 mt-2 pt-2 border-t border-[var(--c-border)]">
-            <select
-              value={equipped!.condition}
-              onChange={(e) => onCondition(e.target.value as Condition)}
-              className="text-[0.65rem] font-mono bg-[var(--c-bg)] border border-[var(--c-border)] px-1 py-0.5"
-              style={{ color: cond!.color }}
-            >
-              {CONDITIONS.map((c) => (
-                <option key={c} value={c}>
-                  {CONDITION_META[c].abbr}
-                </option>
-              ))}
-            </select>
-            <button
-              onClick={onClear}
-              className="text-xs font-mono text-[var(--c-blood-bright)] hover:underline"
-              aria-label="Tirar item"
-            >
-              ✕
-            </button>
-          </div>
+          <button
+            onClick={onClear}
+            className="absolute top-1 right-1 text-[var(--c-blood-bright)] opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono w-5 h-5 leading-none flex items-center justify-center hover:bg-[var(--c-surface-3)]"
+            aria-label="Tirar item"
+            title="Tirar item"
+          >
+            ✕
+          </button>
         </>
       ) : (
         <button
           onClick={onClick}
-          className="w-full h-20 flex flex-col items-center justify-center text-[var(--c-ash)] hover:text-[var(--c-olive-bright)] hover:bg-[var(--c-surface-3)]"
+          className="w-full h-24 flex flex-col items-center justify-center text-[var(--c-ash)] hover:text-[var(--c-olive-bright)] hover:bg-[var(--c-surface-3)] gap-1.5 border-t border-dashed border-[var(--c-border)]"
         >
-          <i className={`fi-rr-${meta.icon} text-2xl mb-1`} />
-          <span className="text-[0.65rem] font-mono tracking-wider">VAZIO</span>
+          <i className={`fi-rr-${meta.icon} text-2xl opacity-60`} />
+          <span className="text-[0.65rem] font-mono tracking-wider">+ EQUIPAR</span>
         </button>
       )}
     </div>
   );
 }
+
+const RARITY_COLOR: Record<string, string> = {
+  common: "var(--c-ash)",
+  uncommon: "var(--c-olive-bright)",
+  rare: "var(--c-brass)",
+  very_rare: "var(--c-rust)",
+  legendary: "var(--c-blood-bright)",
+};
+const PAGE_SIZE = 60;
 
 function ItemPicker({
   slot,
@@ -663,83 +733,233 @@ function ItemPicker({
 }) {
   const [search, setSearch] = useState("");
   const [activeCat, setActiveCat] = useState<string>("");
+  const [bypassSlotFilter, setBypassSlotFilter] = useState(false);
+  const [limit, setLimit] = useState(PAGE_SIZE);
+
+  // Categorias mostradas como chips: dentro do filtro do slot, ou todas
+  // se for inventário/bypass. Mantém os mesmos chips quando o user vai
+  // de "TODAS" pra uma específica — sem reflow.
+  const availableCats = useMemo(() => {
+    if (slot === "inventory" || bypassSlotFilter) {
+      return CATEGORY_META.map((c) => c.key as string);
+    }
+    return (SLOT_META[slot].categoryFilter ?? []) as string[];
+  }, [slot, bypassSlotFilter]);
 
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();
     let pool = ITEMS;
-    if (slot !== "inventory") {
+    if (slot !== "inventory" && !bypassSlotFilter) {
       const meta = SLOT_META[slot];
       const cats = meta.categoryFilter ?? [];
       pool = pool.filter((it) => cats.includes(it.category));
-      // Subcategoria hint pra restringir mais (ex: head só Cabeça)
       if (meta.subcategoryHints && meta.subcategoryHints.length > 0) {
         const hints = meta.subcategoryHints.map((h) => h.toLowerCase());
-        const filteredBySub = pool.filter((it) =>
+        const sub = pool.filter((it) =>
           it.subcategory ? hints.some((h) => it.subcategory!.toLowerCase().includes(h)) : false,
         );
-        if (filteredBySub.length > 0) pool = filteredBySub;
+        if (sub.length > 0) pool = sub;
       }
     }
     if (activeCat) pool = pool.filter((it) => it.category === activeCat);
     if (term) {
       pool = pool.filter((it) => {
-        const hay = `${it.name} ${it.summary} ${it.subcategory ?? ""}`.toLowerCase();
+        const hay = `${it.name} ${it.summary} ${it.subcategory ?? ""} ${(it.tags ?? []).join(" ")}`.toLowerCase();
         return hay.includes(term);
       });
     }
-    return pool.slice(0, 60);
-  }, [search, activeCat, slot]);
+    return pool;
+  }, [search, activeCat, slot, bypassSlotFilter]);
 
+  const visible = filtered.slice(0, limit);
   const slotMeta = slot !== "inventory" ? SLOT_META[slot] : null;
+  const isSlotFiltered = slot !== "inventory" && !bypassSlotFilter;
+
+  function resetPagination() {
+    setLimit(PAGE_SIZE);
+  }
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start justify-center pt-[10vh] px-4"
+      className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start justify-center pt-[6vh] px-4"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl panel"
+        className="w-full max-w-3xl panel max-h-[88vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="panel-header">
           <span className="panel-header__title">
             {slot === "inventory" ? "Adicionar ao Inventário" : `Equipar: ${slotMeta!.label}`}
           </span>
-          <button onClick={onClose} className="text-[var(--c-ash)]">✕</button>
+          <button onClick={onClose} className="text-[var(--c-ash)] text-lg leading-none" aria-label="Fechar">
+            ✕
+          </button>
         </div>
-        <div className="panel-body space-y-3">
+        <div className="panel-body space-y-3 flex-1 overflow-hidden flex flex-col">
+          {/* Busca */}
           <div className="relative">
             <i className="fi-rr-search absolute left-3 top-1/2 -translate-y-1/2 text-[var(--c-bone-dim)]" />
             <input
               autoFocus
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="BUSCAR..."
-              className="input"
+              onChange={(e) => {
+                setSearch(e.target.value);
+                resetPagination();
+              }}
+              placeholder="BUSCAR por nome, calibre, tag..."
+              className="input pl-9"
             />
           </div>
-          <div className="max-h-[50vh] overflow-y-auto space-y-1">
-            {filtered.length === 0 && (
-              <p className="text-sm text-[var(--c-bone-dim)] italic text-center py-8">
-                Nada encontrado.
-              </p>
-            )}
-            {filtered.map((it) => (
+
+          {/* Filtro de slot ativo (toggle pra ignorar) */}
+          {isSlotFiltered && (
+            <div className="flex items-center gap-2 text-xs font-mono">
+              <span className="badge badge--olive">FILTRO: {slotMeta!.label.toUpperCase()}</span>
               <button
-                key={it.slug}
-                onClick={() => onPick(it.slug)}
-                className="w-full flex items-center gap-2 p-2 border border-transparent hover:border-[var(--c-border)] hover:bg-[var(--c-surface-3)] text-left"
+                onClick={() => {
+                  setBypassSlotFilter(true);
+                  setActiveCat("");
+                  resetPagination();
+                }}
+                className="text-[var(--c-bone-dim)] hover:text-[var(--c-olive-bright)] underline"
               >
-                <i className={`fi-rr-${it.icon} text-[var(--c-olive-bright)] shrink-0`} />
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm text-[var(--c-bone)] truncate">{it.name}</div>
-                  <div className="text-xs text-[var(--c-ash)] font-mono">
-                    {it.subcategory ?? it.category}
-                    {it.stats?.weightG !== undefined && ` · ${(it.stats.weightG / 1000).toFixed(2)}kg`}
-                  </div>
-                </div>
+                ver todos os itens
               </button>
-            ))}
+            </div>
+          )}
+          {!isSlotFiltered && slot !== "inventory" && (
+            <div className="flex items-center gap-2 text-xs font-mono">
+              <span className="text-[var(--c-ash)]">SEM FILTRO DE SLOT</span>
+              <button
+                onClick={() => {
+                  setBypassSlotFilter(false);
+                  setActiveCat("");
+                  resetPagination();
+                }}
+                className="text-[var(--c-bone-dim)] hover:text-[var(--c-olive-bright)] underline"
+              >
+                voltar pro filtro de {slotMeta!.label.toLowerCase()}
+              </button>
+            </div>
+          )}
+
+          {/* Chips de categoria */}
+          {availableCats.length > 1 && (
+            <div className="flex flex-wrap gap-1">
+              <button
+                onClick={() => {
+                  setActiveCat("");
+                  resetPagination();
+                }}
+                className={`text-[0.65rem] font-mono px-2 py-1 border tracking-wider transition-colors ${
+                  activeCat === ""
+                    ? "border-[var(--c-olive-bright)] text-[var(--c-olive-bright)] bg-[var(--c-surface-3)]"
+                    : "border-[var(--c-border)] text-[var(--c-ash)] hover:text-[var(--c-bone)]"
+                }`}
+              >
+                TODAS
+              </button>
+              {CATEGORY_META.filter((c) => availableCats.includes(c.key)).map((c) => (
+                <button
+                  key={c.key}
+                  onClick={() => {
+                    setActiveCat(activeCat === c.key ? "" : c.key);
+                    resetPagination();
+                  }}
+                  className={`text-[0.65rem] font-mono px-2 py-1 border flex items-center gap-1 tracking-wider transition-colors ${
+                    activeCat === c.key
+                      ? "border-[var(--c-olive-bright)] text-[var(--c-olive-bright)] bg-[var(--c-surface-3)]"
+                      : "border-[var(--c-border)] text-[var(--c-ash)] hover:text-[var(--c-bone)]"
+                  }`}
+                >
+                  <i className={`fi-rr-${c.icon}`} />
+                  {c.label.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Contador */}
+          <div className="text-[0.65rem] font-mono text-[var(--c-ash)] tracking-wide">
+            {filtered.length === 0
+              ? "0 itens"
+              : `mostrando ${Math.min(limit, filtered.length)} de ${filtered.length}`}
+          </div>
+
+          {/* Grid */}
+          <div className="flex-1 overflow-y-auto -mx-1 px-1">
+            {filtered.length === 0 ? (
+              <p className="text-sm text-[var(--c-bone-dim)] italic text-center py-12">
+                Nada encontrado com esses filtros.
+                {isSlotFiltered && (
+                  <>
+                    {" "}
+                    <button
+                      onClick={() => setBypassSlotFilter(true)}
+                      className="underline text-[var(--c-olive-bright)]"
+                    >
+                      ver todos os itens
+                    </button>
+                  </>
+                )}
+              </p>
+            ) : (
+              <>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+                  {visible.map((it) => (
+                    <button
+                      key={it.slug}
+                      onClick={() => onPick(it.slug)}
+                      className="border border-[var(--c-border)] bg-[var(--c-bg)] p-2 hover:border-[var(--c-olive-bright)] hover:bg-[var(--c-surface-3)] text-left flex flex-col gap-1.5 group"
+                    >
+                      <div className="flex items-start gap-2">
+                        <ItemImage
+                          slug={it.slug}
+                          icon={it.icon}
+                          alt={it.name}
+                          size="sm"
+                          className="shrink-0 border border-[var(--c-border)]"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs text-[var(--c-bone)] leading-tight line-clamp-2 group-hover:text-[var(--c-olive-bright)]">
+                            {it.name}
+                          </div>
+                          <div className="text-[0.6rem] font-mono text-[var(--c-ash)] mt-0.5 truncate">
+                            {it.subcategory ?? it.category}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between text-[0.6rem] font-mono pt-1 border-t border-[var(--c-border)]">
+                        <span
+                          className="flex items-center gap-1 uppercase"
+                          style={{ color: RARITY_COLOR[it.rarity] ?? RARITY_COLOR.common }}
+                        >
+                          <span
+                            className="inline-block w-1.5 h-1.5 rounded-full"
+                            style={{ background: "currentColor" }}
+                          />
+                          {it.rarity.replace("_", " ")}
+                        </span>
+                        <span className="text-[var(--c-ash)]">
+                          {it.stats?.weightG !== undefined
+                            ? `${(it.stats.weightG / 1000).toFixed(2)}kg`
+                            : "—"}
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+                {visible.length < filtered.length && (
+                  <button
+                    onClick={() => setLimit((l) => l + PAGE_SIZE)}
+                    className="btn btn--ghost h-9 text-xs w-full mt-3"
+                  >
+                    + VER MAIS ({filtered.length - visible.length} restantes)
+                  </button>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>

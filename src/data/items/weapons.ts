@@ -722,4 +722,241 @@ export const WEAPONS: Item[] = [
     },
     tags: ["craft", "silencioso"],
   },
+  {
+    slug: "aks-74u",
+    name: "AKS-74U",
+    category: "weapon",
+    subcategory: "Carabina",
+    icon: "bullet",
+    rarity: "rare",
+    loot: ["military", "tier2"],
+    summary:
+      "Krinkov — AK-74 cortado em 5.45×39. CQB devastador, precisão reduzida.",
+    description:
+      "Versão curta do AK-74. Mira menos precisa que rifle full-size mas devastadora em CQB. Mag compatível com AK-74. Coronha dobrável de fábrica — formato compacto pra operadores de veículo e tripulação blindada soviética.",
+    stats: {
+      slots: { w: 3, h: 7 },
+      weightG: 2700,
+      damage: 7.96,
+      rangeM: 150,
+      rpm: 700,
+      magCapacity: 30,
+      caliber: ["545x39"],
+    },
+    notes: [
+      "Cano curto = perda significativa de velocidade do projétil — dano cai rápido após 150m.",
+      "Compartilha mag com KA-74 (AK-74).",
+    ],
+    relations: {
+      requires: [
+        { to: "ka74-mag", note: "carregador AK-74 30rnd" },
+        { to: "545x39", note: "munição 5.45×39" },
+      ],
+      compatibleWith: [
+        { to: "pso-1-scope", note: "via side rail" },
+        { to: "akm-suppressor", note: "rosca compatível" },
+      ],
+      repairedBy: [{ to: "weapon-cleaning-kit" }],
+    },
+    tags: ["soviet", "5.45", "carbine", "cqb"],
+  },
+  {
+    slug: "m16-a2",
+    name: "M16-A2",
+    category: "weapon",
+    subcategory: "Rifle de Assalto",
+    icon: "bullet",
+    rarity: "rare",
+    loot: ["military", "tier3"],
+    summary:
+      "Rifle NATO clássico 5.56 — single-shot ou rajada de 3 por padrão.",
+    description:
+      "Rifle reto, single-shot por padrão (sem auto). Plataforma estável pra dois-tiros precisos. Cano longo entrega velocidade superior à M4 — alcance efetivo maior, recoil dispersivo menor. Compatível com STANAG.",
+    stats: {
+      slots: { w: 7, h: 3 },
+      weightG: 3500,
+      damage: 96,
+      rangeM: 400,
+      rpm: 800,
+      magCapacity: 30,
+      caliber: ["556x45-ball"],
+    },
+    notes: [
+      "Sem modo full-auto — apenas semi e burst de 3. Conserve tiros.",
+      "Tamanho longo (7 slots) — não cabe em mochila pequena.",
+    ],
+    relations: {
+      requires: [
+        { to: "stanag-mag", note: "compartilha mag com M4" },
+        { to: "556x45-ball" },
+      ],
+      compatibleWith: [
+        { to: "acog-scope" },
+        { to: "m4-suppressor", note: "rosca NATO" },
+        { to: "ris-handguard" },
+      ],
+      repairedBy: [{ to: "weapon-cleaning-kit" }],
+    },
+    tags: ["nato", "5.56", "rifle", "burst"],
+  },
+  {
+    slug: "famas-f1",
+    name: "FAMAS F1",
+    category: "weapon",
+    subcategory: "Bullpup",
+    icon: "bullet",
+    rarity: "rare",
+    loot: ["tier3"],
+    summary:
+      "Bullpup francês 5.56 — cadência alta, controle médio em full-auto.",
+    description:
+      "Bullpup compacto francês — 'Le Clairon'. Cadência alta característica (~1000 RPM), mas controle médio em full-auto. Magazine dedicado FAMAS 25rd, não compatível com STANAG. Carry handle integrado com mira óptica baixa.",
+    stats: {
+      slots: { w: 5, h: 3 },
+      weightG: 3600,
+      damage: 92,
+      rangeM: 300,
+      rpm: 1000,
+      magCapacity: 25,
+      caliber: ["556x45-ball"],
+    },
+    notes: [
+      "Cadência mais alta do roster — controle o trigger.",
+      "Mag exclusivo — estoque carregadores extras junto da arma.",
+    ],
+    relations: {
+      requires: [{ to: "mag-famas-25rd" }, { to: "556x45-ball" }],
+      repairedBy: [{ to: "weapon-cleaning-kit" }],
+    },
+    tags: ["nato", "5.56", "bullpup", "auto"],
+  },
+  {
+    slug: "aug-a1",
+    name: "AUG A1",
+    category: "weapon",
+    subcategory: "Bullpup",
+    icon: "bullet",
+    rarity: "rare",
+    loot: ["tier3"],
+    summary:
+      "Bullpup austríaco pioneiro — ótica 1.5× integrada, perfil compacto.",
+    description:
+      "AUG A1 — bullpup pioneer. Compacto, mira óptica integrada (1.5×) no carry handle. Mag transparente próprio (30rnd 5.56). Visor permite mira rápida sem precisar de attachment óptico.",
+    stats: {
+      slots: { w: 5, h: 3 },
+      weightG: 3600,
+      damage: 95,
+      rangeM: 400,
+      rpm: 680,
+      magCapacity: 30,
+      caliber: ["556x45-ball"],
+    },
+    notes: [
+      "Óptica 1.5× integrada não pode ser removida nem substituída.",
+      "Mag dedicado AUG — visualização de munição pelo polímero transparente.",
+    ],
+    relations: {
+      requires: [{ to: "mag-aug-30rd" }, { to: "556x45-ball" }],
+      repairedBy: [{ to: "weapon-cleaning-kit" }],
+    },
+    tags: ["nato", "5.56", "bullpup", "integrated-optic"],
+  },
+  {
+    slug: "t-5000",
+    name: "T-5000",
+    category: "weapon",
+    subcategory: "Sniper",
+    icon: "bullet",
+    rarity: "legendary",
+    loot: ["tier4"],
+    summary:
+      "Sniper bolt-action russo .338 — DLC Sakhal, calibre exclusivo.",
+    description:
+      "Sniper bolt-action high-tier do DLC Sakhal. Calibre .338 não compartilha com nenhuma outra arma vanilla — munição cara. Caixa de precisão chassis com bipé integrado e ótica destacável. Endgame absoluto.",
+    stats: {
+      slots: { w: 8, h: 3 },
+      weightG: 6500,
+      damage: 160,
+      rangeM: 1200,
+      rpm: 40,
+      magCapacity: 5,
+      caliber: ["338lm"],
+    },
+    notes: [
+      "Calibre .338 Lapua é exclusivo dessa arma — sem alternativa em outro rifle.",
+      "Loot apenas em Sakhal (mapa DLC) tier4.",
+    ],
+    relations: {
+      repairedBy: [{ to: "weapon-cleaning-kit" }],
+    },
+    tags: ["sniper", "endgame", "sakhal", "bolt-action", "338"],
+  },
+  {
+    slug: "cz-bren-2",
+    name: "CZ Bren 2",
+    category: "weapon",
+    subcategory: "Rifle de Assalto",
+    icon: "bullet",
+    rarity: "rare",
+    loot: ["tier3"],
+    summary:
+      "Bren 2 — modular checa 5.56 com M-LOK e compatibilidade STANAG.",
+    description:
+      "Bren 2 — modular checa. Compatível com STANAG e accessórios M-LOK. Plataforma moderna substituta da CZ-805. Ergonomia ambidestra, controle ergonômico do recoil, três modos de fogo.",
+    stats: {
+      slots: { w: 6, h: 3 },
+      weightG: 3100,
+      damage: 96,
+      rangeM: 450,
+      rpm: 800,
+      magCapacity: 30,
+      caliber: ["556x45-ball"],
+    },
+    notes: [
+      "Aceita rails M-LOK pra grip vertical e laser.",
+      "Mag STANAG — compartilha com M4 e M16.",
+    ],
+    relations: {
+      requires: [{ to: "stanag-mag" }, { to: "556x45-ball" }],
+      compatibleWith: [
+        { to: "acog-scope" },
+        { to: "holosight" },
+        { to: "vertical-grip" },
+      ],
+      repairedBy: [{ to: "weapon-cleaning-kit" }],
+    },
+    tags: ["nato", "5.56", "rifle", "modern", "modular"],
+  },
+  {
+    slug: "mosin-pu-scoped",
+    name: "Mosin 9130 + PU",
+    category: "weapon",
+    subcategory: "Sniper",
+    icon: "bullet",
+    rarity: "rare",
+    loot: ["hunting", "tier2"],
+    summary:
+      "Mosin com ótica PU 3.5× pré-montada — spawn alternativo em hunting.",
+    description:
+      "Mosin com mira PU 3.5× pré-montada. Spawn alternativo de hunting lodges. Não é uma arma separada — é o mesmo Mosin 9130 + scope PU, listado pra busca rápida. Performance idêntica ao combo manual.",
+    stats: {
+      slots: { w: 7, h: 2 },
+      weightG: 4400,
+      damage: 105,
+      rangeM: 800,
+      rpm: 25,
+      magCapacity: 5,
+      caliber: ["762x54r"],
+    },
+    notes: [
+      "Mecânica idêntica ao Mosin base — só economiza o passo de instalar a scope.",
+      "Entrada no codex apenas pra facilitar busca.",
+    ],
+    relations: {
+      requires: [{ to: "762x54r" }],
+      compatibleWith: [{ to: "pu-scope", note: "já vem instalada" }],
+      repairedBy: [{ to: "weapon-cleaning-kit" }],
+    },
+    tags: ["sniper", "soviet", "bolt-action", "scoped"],
+  },
 ];
